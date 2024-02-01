@@ -47,6 +47,9 @@ body {
   font-family: SpaceGrotesque, verdana;
   font-size: 18pt;
 }
+.inscription__mainElement__formConteneur__formulaire::-webkit-scrollbar {
+  width: 0;
+}
 .inscription__mainElement__formConteneur__formulaire {
   display: flex;
   flex-direction: column;
@@ -54,6 +57,8 @@ body {
   margin: 2vh;
   max-height: 100%;
   overflow: auto;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
 }
 .inscription__mainElement__formConteneur__formulaire__range {
   display: flex;
@@ -63,6 +68,20 @@ body {
 }
 .inscription__mainElement__formConteneur__formulaire__range__limitRange {
   margin: 1%;
+}
+.inscription__mainElement__formConteneur__formulaire__avatar {
+  padding: 2%;
+  margin-top: 3vh;
+  display: grid;
+  grid-template: 1fr 1fr/1fr 1fr;
+  gap: 1%;
+}
+.inscription__mainElement__formConteneur__formulaire__avatar input {
+  width: 100%;
+  height: 100%;
+}
+.inscription__mainElement__formConteneur__formulaire__avatarTitle {
+  margin-top: 3vh;
 }
 .inscription__mainElement__formConteneur__formulaire__button {
   margin: 4%;
@@ -123,4 +142,4 @@ input {
     height: 6vh;
     width: 70vw;
   }
-} /*# sourceMappingURL=inscription.module.css.map */
+}/*# sourceMappingURL=inscription.module.css.map */

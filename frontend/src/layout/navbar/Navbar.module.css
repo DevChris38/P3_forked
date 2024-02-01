@@ -109,7 +109,6 @@ nav ul {
     border-radius: 50px;
     display: block;
     margin-right: 40px;
-    margin-right: 40px;
   }
   .btnConnection:hover {
     background: linear-gradient(rgb(137, 139, 177), black);
@@ -160,6 +159,4 @@ nav ul {
   nav {
     justify-content: center;
   }
-}
-
-/*# sourceMappingURL=Navbar.module.css.map */
+}/*# sourceMappingURL=Navbar.module.css.map */
