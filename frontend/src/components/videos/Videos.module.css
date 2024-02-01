@@ -1,0 +1,61 @@
+#videoContainer {
+  width: 65vw;
+  margin-left: 7vw;
+  color: white;
+}
+#videoContainer video {
+  width: 100%;
+  border-radius: 3%;
+  box-shadow: 0px 2vh 3vw 0px black;
+}
+#videoContainer #informations {
+  margin-top: 2vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#videoContainer #informations h2 {
+  width: 100%;
+}
+#videoContainer #informations__owner {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  margin: 2% 0;
+}
+#videoContainer #informations__owner img {
+  height: 3rem;
+  margin-right: 2%;
+  border-radius: 100%;
+}
+#videoContainer #informations__likes {
+  width: clamp(130px, 30%, 500px);
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  margin: 2% 0;
+}
+#videoContainer #informations__likes__button {
+  background-color: transparent;
+  border: 0;
+  margin-right: 2%;
+}
+#videoContainer #informations__likes img {
+  height: 1.5rem;
+}
+#videoContainer #informations__likes p {
+  margin-right: 10%;
+}
+#videoContainer #informations__description {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 2% 0;
+}
+
+@media screen and (max-width: 1000px) {
+  #videoContainer {
+    width: 96vw;
+    margin: 0 2vw;
+  }
+} /*# sourceMappingURL=Videos.module.css.map */

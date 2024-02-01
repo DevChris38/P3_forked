@@ -1,0 +1,146 @@
+$mainFont: SpaceGrotesque, verdana;
+$backgroundColor: #20212f;
+$inputColor: #454766;
+
+body {
+  background-color: #20212f;
+  font-family: $mainFont;
+}
+
+.inscription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  &__mainElement {
+    display: flex;
+    box-shadow: 2px 5px 50px black;
+    border-radius: 10px;
+    max-height: 80vh;
+    position: fixed;
+    left: 50%;
+    top: 12%;
+    translate: -50%;
+
+    &__desktopImg {
+      max-width: 50%;
+      max-height: 100vh;
+      border-radius: 10px 0px 0px 10px;
+    }
+
+    &__mobileImg {
+      display: none;
+    }
+
+    &__formConteneur {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 50%;
+
+      &__title {
+        background-color: $inputColor;
+        width: 100%;
+        text-align: center;
+        border-radius: 0px 10px 0px 0px;
+        font-family: $mainFont;
+        font-size: 18pt;
+      }
+
+      &__formulaire {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2vh;
+        max-height: 100%;
+        overflow: auto;
+
+        &__range {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          margin: 5%;
+
+          &__limitRange {
+            margin: 1%;
+          }
+        }
+
+        &__button {
+          height: 30px;
+          background: linear-gradient($inputColor 10px, $backgroundColor);
+          cursor: pointer;
+          background-color: $inputColor;
+          border: none;
+          border-radius: 4px;
+          height: 35px;
+          color: white;
+          font-size: 15pt;
+          font-weight: bolder;
+          text-align: center;
+          width: 100%;
+        }
+        &__paragraphe {
+          margin: 3px;
+        }
+      }
+    }
+  }
+}
+
+label {
+  margin-bottom: 2%;
+}
+
+input {
+  background-color: $inputColor;
+  border: none;
+  border-radius: 4px;
+  height: 30px;
+  color: white;
+  width: 20vw;
+}
+
+@media screen and (max-width: 750px) {
+  .inscription__mainElement {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 0px black;
+    position: relative;
+
+    &__desktopImg {
+      display: none;
+    }
+
+    &__mobileImg {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+    }
+
+    &__formConteneur__title {
+      display: none;
+      width: 100%;
+    }
+    &__formConteneur__formulaire {
+      width: 80%;
+
+      &__button {
+        width: 100%;
+        height: 6vh;
+      }
+      &__paragraphe {
+        margin: 15px;
+      }
+    }
+
+    input {
+      height: 6vh;
+      width: 80vw;
+    }
+  }
+}

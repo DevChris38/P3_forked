@@ -1,0 +1,38 @@
+html::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@font-face {
+  font-family: "Shippori";
+  src:
+    local("Shippori"),
+    url(./src/assets/fonts/ShipporiAntiqueB1-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "SpaceGrotesque";
+  src:
+    local("SpaceGrotesque"),
+    url(./src/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf)
+      format("truetype");
+}
+
+p {
+  font-family: Shippori, verdana;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+a {
+  font-family: SpaceGrotesque, verdana;
+}

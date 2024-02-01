@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  padding: 1rem;
+}
+.navbar,
+li,
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+h3 {
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(black 20px, transparent);
+  width: 100vw;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.imgLogo {
+  width: 4rem;
+}
+nav ul {
+  position: fixed;
+  left: -100%;
+  top: 5%;
+  flex-direction: column;
+  width: 40%;
+  text-align: center;
+  transition: 250ms;
+  background-color: rgba(29, 30, 43, 1);
+  border-radius: 10px;
+  text-decoration: none;
+}
+.btnConnection {
+  display: none;
+}
+.imgProfil {
+  width: 3rem;
+  border-radius: 100%;
+  display: none;
+  height: 100%;
+}
+.name {
+  color: white;
+}
+
+.categoryList {
+  display: none;
+}
+
+.buttonCategory {
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+@media screen and (min-width: 1000px) {
+  nav {
+    background: linear-gradient(black 30px, transparent);
+  }
+
+  nav ul {
+    display: flex;
+    left: 0%;
+    flex-direction: row;
+    width: 100%;
+    top: 0;
+    border-radius: 0px;
+    background-color: transparent;
+    position: relative;
+  }
+
+  .imgLogo {
+    display: block;
+    width: 5rem;
+  }
+  .btnConnection {
+    display: block;
+    margin-right: 1rem;
+    width: 10rem;
+    border: none;
+    border-radius: 10px;
+    height: 2rem;
+    color: white;
+    background: linear-gradient(rgba(103, 106, 147, 1), black);
+  }
+  .imgProfil {
+    width: 3rem;
+    border-radius: 50px;
+    display: block;
+    margin-right: 40px;
+  }
+  .btnConnection:hover {
+    background: linear-gradient(rgba(137, 139, 177, 1), black);
+    scale: 1.02;
+    transition: 250ms;
+  }
+  .name {
+    display: none;
+  }
+
+  #category {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    .categoryMenu {
+      display: flex;
+      top: 3rem;
+      flex-direction: column;
+      text-align: center;
+      transition: 0.25s;
+      position: absolute;
+    }
+  }
+
+  .active {
+    background-color: black;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+
+  .active:hover {
+    color: black;
+    background-color: rgba(137, 139, 177, 1);
+  }
+
+  .buttonCategory {
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+
+  #lastMenuElement {
+    border-radius: 0px 0px 10px 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  nav {
+    justify-content: center;
+  }
+}

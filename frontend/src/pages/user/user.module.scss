@@ -1,0 +1,22 @@
+.userAccount {
+  display: flex;
+  height: 67vh;
+}
+
+@media screen and (max-width: 1000px) {
+  .userPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+
+  .userAccount {
+    display: flex;
+    flex-direction: column;
+    height: 195vh;
+    align-items: center;
+  }
+}

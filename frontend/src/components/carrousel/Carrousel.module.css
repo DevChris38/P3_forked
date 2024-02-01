@@ -1,0 +1,95 @@
+.carousel__embla {
+  --slide-spacing: 1rem;
+  --slide-size: 40%;
+  --slide-height: 100%;
+  position: relative;
+  width: 100%;
+  padding-left: 3%;
+}
+.carousel__embla ::-webkit-scrollbar {
+  display: none;
+}
+.carousel__embla__title {
+  color: white;
+  font-size: x-large;
+  margin-bottom: 1%;
+}
+.carousel__embla__viewport {
+  display: flex;
+  overflow: scroll;
+  align-items: center;
+}
+.carousel__embla__viewport__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.carousel__embla__viewport__container__slide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  position: relative;
+  padding-bottom: 2%;
+}
+.carousel__embla__viewport__container__slide__number {
+  width: 4.6rem;
+  height: 4.6rem;
+  z-index: 1;
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  border-radius: 50%;
+  background-color: rgba(var(--background-site-rgb-value), 0.85);
+  line-height: 4.6rem;
+  font-weight: 900;
+  text-align: center;
+  pointer-events: none;
+}
+.carousel__embla__viewport__container__slide__number > span {
+  color: var(--brand-primary);
+  background-image: linear-gradient(
+    45deg,
+    var(--brand-primary),
+    var(--brand-secondary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.6rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.carousel__embla__viewport__container__slide__img {
+  display: block;
+  height: var(--slide-height);
+  width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+  border-radius: 5px;
+  scroll-snap-align: start;
+  filter: drop-shadow(0 20px 0.75rem black);
+}
+.carousel__embla__viewport__buttons {
+  display: flex;
+  width: 92%;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media screen and (min-width: 1000px) {
+  .carousel__embla {
+    --slide-spacing: 1rem;
+    --slide-size: 20%;
+    --slide-height: 100%;
+    position: relative;
+    width: 100%;
+  }
+} /*# sourceMappingURL=Carrousel.module.css.map */

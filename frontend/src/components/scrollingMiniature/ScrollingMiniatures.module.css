@@ -1,0 +1,27 @@
+#scrollingMiniatures {
+  right: 0;
+  margin-top: 7%;
+  position: absolute;
+  overflow-y: scroll;
+  height: 80vh;
+  width: 25vw;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#scrollingMiniatures__miniature {
+  margin: 3% 0;
+  width: 100%;
+}
+#scrollingMiniatures::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  #scrollingMiniatures {
+    overflow-y: scroll;
+    width: 100vw;
+    position: relative;
+    margin-top: 5%;
+    padding: 0 10vw;
+  }
+} /*# sourceMappingURL=ScrollingMiniatures.module.css.map */

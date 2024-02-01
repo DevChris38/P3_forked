@@ -1,0 +1,54 @@
+.fondAvatar {
+  background-color: #454766;
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.fondAvatar__imageContainer {
+  background-color: #454766;
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  margin: 0 5% 5% 5%;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+}
+.fondAvatar__imageContainer__image {
+  border-radius: 20px;
+  margin: 2%;
+}
+.fondAvatar__imageContainer h2 {
+  text-align: center;
+}
+.fondAvatar__imageContainer input {
+  height: 40%;
+  width: 40%;
+  margin: 2%;
+}
+
+#fondAvatar__actualAvatar {
+  border: 4px solid black;
+}
+
+@media screen and (max-width: 1000px) {
+  .fondAvatar {
+    overflow: visible;
+    width: 100%;
+    margin: 2.5%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+/*# sourceMappingURL=avatar.module.css.map */

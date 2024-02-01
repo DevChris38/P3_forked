@@ -1,0 +1,65 @@
+.videoUserComponent {
+  color: white;
+}
+.videoUserComponent__oneVideo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 2%;
+}
+.videoUserComponent__oneVideo__videoInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1%;
+}
+.videoUserComponent__oneVideo__videoInfo__titleAndButton {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.videoUserComponent__oneVideo__videoInfo__titleAndButton__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1%;
+}
+.videoUserComponent__oneVideo__videoInfo__titleAndButton__buttons__singleButton {
+  margin: 5%;
+}
+.videoUserComponent__oneVideo__videoInfo__titleAndButton__buttons__singleButton:hover {
+  background-color: #20212f;
+}
+
+#componentTitle {
+  margin-left: 2%;
+}
+
+#videoTitle {
+  margin-bottom: 1%;
+}
+
+#miniature {
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+  .videoUserComponent {
+    width: 100%;
+  }
+  .videoUserComponent__oneVideo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .videoUserComponent__oneVideo__videoInfo {
+    width: 100%;
+  }
+  #miniature {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=videoUser.module.css.map */

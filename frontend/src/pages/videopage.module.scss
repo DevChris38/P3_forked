@@ -1,0 +1,13 @@
+#videopage {
+  background-color: #20212f;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width = 1000px) {
+  #videopage {
+    justify-content: center;
+  }
+}
