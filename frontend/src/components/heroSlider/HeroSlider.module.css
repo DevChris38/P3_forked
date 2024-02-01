@@ -28,8 +28,7 @@
   display: block;
   height: var(--slide-height);
   width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   filter: drop-shadow(0 20px 0.75rem black);
   padding-bottom: 10%;
   border-radius: 5px;
@@ -52,7 +51,11 @@
 }
 .mainContainer__embla__viewport__container__slide__number > span {
   color: var(--brand-primary);
-  background-image: linear-gradient(45deg, var(--brand-primary), var(--brand-secondary));
+  background-image: linear-gradient(
+    45deg,
+    var(--brand-primary),
+    var(--brand-secondary)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -89,7 +92,11 @@
   background-color: black;
 }
 .mainContainer__dots__dot--selected:after {
-  background: linear-gradient(45deg, var(--brand-primary), var(--brand-secondary));
+  background: linear-gradient(
+    45deg,
+    var(--brand-primary),
+    var(--brand-secondary)
+  );
   background-color: white;
 }
 
@@ -137,4 +144,6 @@
     margin-right: 0.75rem;
     margin-left: 0.75rem;
   }
-}/*# sourceMappingURL=HeroSlider.module.css.map */
+}
+
+/*# sourceMappingURL=HeroSlider.module.css.map */
