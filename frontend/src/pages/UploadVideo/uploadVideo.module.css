@@ -29,7 +29,6 @@
 }
 .uploadVideoContainer__form__divUploadVideo {
   width: 30%;
-  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
@@ -44,7 +43,6 @@
 }
 .uploadVideoContainer__form__divUploadMiniature {
   width: 30%;
-  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +96,6 @@
   }
   .uploadVideoContainer__form__divUploadVideo {
     width: 100%;
-    height: -moz-fit-content;
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
@@ -112,7 +109,6 @@
   }
   .uploadVideoContainer__form__divUploadMiniature {
     width: 100%;
-    height: -moz-fit-content;
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
@@ -167,8 +163,9 @@ img {
   transform: translateY(-50%);
 }
 .afterSubmit div {
-  width: -moz-fit-content;
   width: fit-content;
   font-size: 1.5rem;
   margin: 5% 5%;
-} /*# sourceMappingURL=uploadVideo.module.css.map */
+}
+
+/*# sourceMappingURL=uploadVideo.module.css.map */

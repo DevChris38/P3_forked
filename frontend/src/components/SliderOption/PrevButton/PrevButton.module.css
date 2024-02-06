@@ -1,0 +1,43 @@
+.embla__button__prev {
+  display: none;
+}
+.embla__button__prev__svg {
+  width: 40%;
+  height: 40%;
+}
+
+@media screen and (min-width: 1000px) {
+  .embla__button__prev:disabled {
+    opacity: 0.3;
+  }
+  .embla__button__prev {
+    z-index: 1;
+    color: var(--background-site);
+    display: block;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+    -webkit-appearance: none;
+    background-color: transparent;
+    touch-action: manipulation;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: white;
+  }
+  .heroSlider {
+    width: 40%;
+    height: 40%;
+  }
+  .carousel {
+    width: 40%;
+    height: 40%;
+  }
+}
+
+/*# sourceMappingURL=PrevButton.module.css.map */

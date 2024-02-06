@@ -25,6 +25,7 @@
 }
 #videoContainer #informations__owner img {
   height: 3rem;
+  width: 3rem;
   margin-right: 2%;
   border-radius: 100%;
 }
@@ -58,4 +59,6 @@
     width: 96vw;
     margin: 0 2vw;
   }
-} /*# sourceMappingURL=Videos.module.css.map */
+}
+
+/*# sourceMappingURL=Videos.module.css.map */

@@ -74,7 +74,6 @@
 }
 .mainButtonsContainer #css {
   background: linear-gradient(#4ca4dd, #004695);
-
   border-radius: 8px;
   border: 6px solid transparent;
   background: linear-gradient(#4ca4dd, #004695) border-box;
@@ -117,3 +116,5 @@
     height: 7rem;
   }
 }
+
+/*# sourceMappingURL=boutonsLanguages.module.css.map */
