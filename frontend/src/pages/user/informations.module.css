@@ -45,10 +45,6 @@ label {
   font-weight: bolder;
 }
 
-.informations__globalRange__ranges::-moz-placeholder {
-  color: white;
-}
-
 .informations__globalRange__ranges::placeholder {
   color: white;
 }
@@ -69,4 +65,6 @@ label {
   .informations__globalRange__ranges {
     width: 100%;
   }
-}/*# sourceMappingURL=informations.module.css.map */
+}
+
+/*# sourceMappingURL=informations.module.css.map */
