@@ -7,7 +7,7 @@ import styles from "./Carrousel.module.css";
 import PrevButton from "../SliderOption/PrevButton/PrevButton";
 import NextButton from "../SliderOption/NextButton/NextButton";
 
-export default function Carrousel({ title }) {
+export default function Carrousel({ title, tableId }) {
   const OPTIONS = {
     slidesToScroll: "auto",
     containScroll: "trimSnaps",
@@ -15,7 +15,7 @@ export default function Carrousel({ title }) {
   };
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS);
   // tabl img will goes replace with an table id will passed trhough link for call bdd
-  const tableId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // const tableId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -54,33 +54,35 @@ export default function Carrousel({ title }) {
       <p className={styles.carousel__embla__title}>{title}</p>
       <div className={styles.carousel__embla__viewport} ref={emblaRef}>
         <div className={styles.carousel__embla__viewport__container}>
-          {tableId.map((element, index) => (
-            <div
-              className={styles.carousel__embla__viewport__container__slide}
-              key={element}
-            >
-              <div
-                className={
-                  styles.carousel__embla__viewport__container__slide__number
-                }
-              >
-                <span key={element}>{index + 1}</span>
-              </div>
-              <Link
-                to={{
-                  pathname: `/video/${element}`,
-                }}
-              >
-                <Miniature
-                  className={
-                    styles.carousel__embla__viewport__container__slide__img
-                  }
-                  idMiniature={element}
-                  carouselClass="carousel"
-                />
-              </Link>
-            </div>
-          ))}
+          {tableId !== undefined
+            ? tableId.map((element, index) => (
+                <div
+                  className={styles.carousel__embla__viewport__container__slide}
+                  key={element}
+                >
+                  <div
+                    className={
+                      styles.carousel__embla__viewport__container__slide__number
+                    }
+                  >
+                    <span key={element}>{index + 1}</span>
+                  </div>
+                  <Link
+                    to={{
+                      pathname: `/video/${element}`,
+                    }}
+                  >
+                    <Miniature
+                      className={
+                        styles.carousel__embla__viewport__container__slide__img
+                      }
+                      idMiniature={element}
+                      carouselClass="carousel"
+                    />
+                  </Link>
+                </div>
+              ))
+            : null}
         </div>
         <div className={styles.carousel__embla__viewport__buttons}>
           <PrevButton
@@ -104,4 +106,5 @@ export default function Carrousel({ title }) {
 
 Carrousel.propTypes = {
   title: PropTypes.string.isRequired,
+  tableId: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
