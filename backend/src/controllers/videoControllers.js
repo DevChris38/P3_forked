@@ -124,6 +124,19 @@ const readByUserId = async (req, res, next) => {
   }
 };
 
+const countVideo = async (req, res, next) => {
+  try {
+    const video = await tables.video.countVideo();
+    if (video == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(video);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   read,
   readImageById,
@@ -134,4 +147,5 @@ module.exports = {
   ModifyVideo,
   uploadVideo,
   readByUserId,
+  countVideo,
 };
