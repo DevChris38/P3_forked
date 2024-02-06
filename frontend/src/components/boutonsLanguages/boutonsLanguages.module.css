@@ -40,7 +40,9 @@
   border-radius: 8px;
   border: 6px solid transparent;
   background: linear-gradient(#f7e600, #e7c200) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
   color: black;
 }
 .mainButtonsContainer #php {
@@ -48,28 +50,36 @@
   border-radius: 8px;
   border: 6px solid transparent;
   background: linear-gradient(#828ed2, #606a9f) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
 }
 .mainButtonsContainer #Python {
   background: linear-gradient(to left, #ffd527, #2a72a9);
   border-radius: 8px;
   border: 6px solid transparent;
   background: linear-gradient(to left, #ffd527, #2a72a9) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
 }
 .mainButtonsContainer #Java {
   background: linear-gradient(#ff0000, #bb0000);
   border-radius: 8px;
   border: 6px solid transparent;
   background: linear-gradient(#ff0000, #bb0000) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
 }
 .mainButtonsContainer #css {
   background: linear-gradient(#4ca4dd, #004695);
   border-radius: 8px;
   border: 6px solid transparent;
   background: linear-gradient(#4ca4dd, #004695) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
 }
 
 @media screen and (min-width: 1000px) {
@@ -105,4 +115,6 @@
     width: 16%;
     height: 7rem;
   }
-}/*# sourceMappingURL=boutonsLanguages.module.css.map */
+}
+
+/*# sourceMappingURL=boutonsLanguages.module.css.map */
