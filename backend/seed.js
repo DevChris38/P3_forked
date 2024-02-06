@@ -10,7 +10,6 @@ const seed = async () => {
   try {
     // Declare an array to store the query promises
     // See why here: https://eslint.org/docs/latest/rules/no-await-in-loop
-    const queries = [];
 
     /* ************************************************************************* */
 
@@ -23,14 +22,14 @@ const seed = async () => {
       ["ulrick", "dupont", "dout@dupont.com", "Alexandre", "tutu"],
     ];
 
-    for await (const rowValues of valuesUser) {
-      queries.push(
-        database.query(
+    await Promise.all(
+      valuesUser.map(async (rowValues) => {
+        await database.query(
           "INSERT INTO user (firstname, lastname, mail, pseudo, hashed_password) VALUES (?)",
           [rowValues]
-        )
-      );
-    }
+        );
+      })
+    );
 
     const valuesVideo = [
       [
@@ -413,14 +412,14 @@ const seed = async () => {
       ],
     ];
 
-    for await (const rowValues of valuesVideo) {
-      queries.push(
-        database.query(
+    await Promise.all(
+      valuesVideo.map(async (rowValues) => {
+        await database.query(
           "INSERT INTO video (title, link, image, description, weight, duration, user_id) VALUES (?)",
           [rowValues]
-        )
-      );
-    }
+        );
+      })
+    );
 
     const valuesCategory = [
       ["JavaScript"],
@@ -431,11 +430,13 @@ const seed = async () => {
       ["Python"],
     ];
 
-    for await (const rowValues of valuesCategory) {
-      queries.push(
-        database.query("INSERT INTO category (name) VALUES (?)", [rowValues])
-      );
-    }
+    await Promise.all(
+      valuesCategory.map(async (rowValues) => {
+        await database.query("INSERT INTO category (name) VALUES (?)", [
+          rowValues,
+        ]);
+      })
+    );
 
     const valuesVideoCategory = [
       [1, 1],
@@ -445,14 +446,14 @@ const seed = async () => {
       [4, 5],
     ];
 
-    for await (const rowValues of valuesVideoCategory) {
-      queries.push(
-        database.query(
+    await Promise.all(
+      valuesVideoCategory.map(async (rowValues) => {
+        await database.query(
           "INSERT INTO video_category (category_id, video_id) VALUES (?)",
           [rowValues]
-        )
-      );
-    }
+        );
+      })
+    );
 
     const valuesLikes = [
       [1, 1],
@@ -467,18 +468,16 @@ const seed = async () => {
       [1, 5],
     ];
 
-    for await (const rowValues of valuesLikes) {
-      queries.push(
-        database.query("INSERT INTO likes ( user_id, video_id) VALUES(?)", [
-          rowValues,
-        ])
-      );
-    }
+    await Promise.all(
+      valuesLikes.map(async (rowValues) => {
+        await database.query(
+          "INSERT INTO likes ( user_id, video_id) VALUES(?)",
+          [rowValues]
+        );
+      })
+    );
 
     /* ************************************************************************* */
-
-    // Wait for all the insertion queries to complete
-    await Promise.all(queries);
 
     // Close the database connection
     database.end();
