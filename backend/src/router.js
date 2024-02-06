@@ -30,8 +30,10 @@ router.post("/items", itemControllers.add);
 // Route to get video information by id
 router.get("/videos/:id", videoControllers.read);
 router.get("/videos/miniatures/:id", videoControllers.readImageById);
-
-router.get("/videos/:id/like/:user", videoControllers.isLikedByUser);
+router.get("/videosId", videoControllers.OrderById);
+router.get("/videosView", videoControllers.OrderByView);
+router.get("/videosView", videoControllers.OrderByView);
+router.get("/videoslikes", videoControllers.mostLiked);
 
 // route qui recupère le titre et l'image de la miniature video
 
@@ -56,6 +58,10 @@ router.delete("/videos/deleteVideo", videoControllers.videoDelete);
 
 // route qui supprime un user
 router.delete("/users/deleteUser", userControllers.userDelete);
+
+
+router.get("/categories", videoControllers.allCategories);
+router.get("/special/:category", videoControllers.readSpecificCategories);
 
 // Authentication wall that allows to protect all routes after that
 router.use(verifyToken);
