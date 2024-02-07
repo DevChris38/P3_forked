@@ -68,7 +68,6 @@ const isLikedByUser = async (req, res, next) => {
 const ModifyVideo = async (req, res, next) => {
   try {
     const video = req.body;
-    console.log(video);
     await tables.video.updateVideo(video);
     res.status(200).send("video was updated");
   } catch (err) {
@@ -172,7 +171,6 @@ const readSpecificCategories = async (req, res) => {
 };
 
 const mostLiked = async (req, res, next) => {
-  console.log("coucou");
   try {
     const videos = await tables.video.mostLiked();
     if (videos === null) {
@@ -187,7 +185,6 @@ const mostLiked = async (req, res, next) => {
 };
 
 const CategoryMostLiked = async (req, res, next) => {
-  console.log("categoryMostLiked");
   const { categoryName } = req.params;
   try {
     const videos = await tables.video.categoryMostLiked(categoryName);
@@ -203,7 +200,6 @@ const CategoryMostLiked = async (req, res, next) => {
 };
 
 const categoryMostView = async (req, res, next) => {
-  console.log("categoryMostLiked");
   const { categoryName } = req.params;
   try {
     const videos = await tables.video.OrderByIdCategory(categoryName);
@@ -232,6 +228,19 @@ const searchTitle = async (req, res, next) => {
   }
 };
 
+const countVideo = async (req, res, next) => {
+  try {
+    const video = await tables.video.countVideo();
+    if (video == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(video);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   read,
   readImageById,
@@ -250,4 +259,5 @@ module.exports = {
   CategoryMostLiked,
   categoryMostView,
   searchTitle,
+  countVideo,
 };

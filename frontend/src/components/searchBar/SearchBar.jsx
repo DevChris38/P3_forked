@@ -49,6 +49,7 @@ function SearchBar() {
       </div>
       <div id={styles.scrollingMiniatures}>
         {search !== "" &&
+          searchResponse !== "" &&
           searchResponse.map((number) => {
             return (
               <div id={styles.scrollingMiniatures__miniature} key={number.id}>
