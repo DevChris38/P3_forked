@@ -440,31 +440,27 @@ const seed = async () => {
       ],
     ];
 
-    await Promise.all(
-      valuesVideo.map(async (rowValues) => {
-        await database.query(
-          "INSERT INTO video (title, link, image, description, weight, duration, user_id) VALUES (?)",
-          [rowValues]
-        );
-      })
-    );
+    for (let i = 0; i < valuesVideo.length; i++) {
+      await database.query(
+        "INSERT INTO video (title, link, image, description, weight, duration, user_id) VALUES (?)",
+        [valuesVideo[i]]
+      );
+    }
 
     const valuesCategory = [
       ["JavaScript"],
       ["css"],
       ["Java"],
-      ["Autre"],
+      ["toto"],
       ["php"],
       ["Python"],
     ];
 
-    await Promise.all(
-      valuesCategory.map(async (rowValues) => {
-        await database.query("INSERT INTO category (name) VALUES (?)", [
-          rowValues,
-        ]);
-      })
-    );
+    for (let i = 0; i < valuesCategory.length; i++) {
+      await database.query("INSERT INTO category (name) VALUES (?)", [
+        valuesCategory[i],
+      ]);
+    }
 
     const valuesVideoCategory = [
       [2, 1],
