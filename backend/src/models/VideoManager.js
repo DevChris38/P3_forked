@@ -173,7 +173,6 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async OrderById() {
-    console.log("coucou");
     const [rows] = await this.database.query(
       `SELECT id FROM ${this.table} order by id desc limit 10`
     );
@@ -181,7 +180,6 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async OrderByView() {
-    console.log("coucou");
     const [rows] = await this.database.query(
       `SELECT id FROM ${this.table} order by nb_view desc limit 10`
     );
@@ -211,7 +209,6 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async mostLiked() {
-    console.log("salut");
     const [rows] = await this.database.query(
       `SELECT video_id AS id, COUNT(video_id) AS nombre_occurrences
       FROM likes
@@ -221,7 +218,6 @@ class MainVideoPlayerManager extends AbstractManager {
     return rows;
   }
   async categoryMostLiked(categoryName) {
-    console.log("salut");
     const [rows] = await this.database.query(
       `select video_category.video_id as test from video_category
       inner join likes on likes.video_id = video_category.video_id 
@@ -233,7 +229,6 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async OrderByViewByCategory() {
-    console.log("coucou");
     const [rows] = await this.database.query(
       `SELECT id FROM ${this.table} order by nb_view desc limit 10`
     );
@@ -241,7 +236,6 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async OrderByIdCategory(categoryName) {
-    console.log("coucou");
     const [rows] = await this.database.query(
       `  select video.id as test from video
       inner join video_category on video_category.video_id = video.id 

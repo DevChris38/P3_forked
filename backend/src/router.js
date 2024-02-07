@@ -51,6 +51,9 @@ router.put("/video", videoControllers.ModifyVideo);
 // route qui ajoute/supprime un like à une video
 router.put("/videos/:id/like/:user", videoControllers.likeVideo);
 
+// route qui vérifie si un utilisateur a liké une vidéo
+router.get("/videos/:id/like/:user", videoControllers.isLikedByUser);
+
 // route qui ajoute une nouvelle video
 router.post("/videos/upload", videoControllers.uploadVideo);
 

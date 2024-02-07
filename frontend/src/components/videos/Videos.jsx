@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./Videos.module.css";
+import { useInfosContext } from "../../UserContext";
 
 function Videos({ videoInfo }) {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [blackAndWhite, setBlackAndWhite] = useState(null);
+  const { userData } = useInfosContext();
 
   // This useEffect allows to set thumb image in greyscale if video is not liked yet by this user
   useEffect(() => {
@@ -13,18 +15,21 @@ function Videos({ videoInfo }) {
   }, [isLiked]);
 
   const handleLike = async () => {
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/videos/4/like/1`, {
-      method: "PUT",
-    });
+    await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/videos/${videoInfo.id}/like/${userData.id}`,
+      {
+        method: "PUT",
+      }
+    );
     const videoCall = await fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/api/videos/4`
+      `${import.meta.env.VITE_BACKEND_URL}/api/videos/${videoInfo.id}`
     );
     const videoResult = await videoCall.json();
     setLikes(videoResult.nbr_like);
 
     // Ask to BDD if user has like yet this video and store the information in "isLiked" state
     const videoIsLiked = await fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/api/videos/4/like/1`
+      `${import.meta.env.VITE_BACKEND_URL}/api/videos/${videoInfo.id}/like/${userData.id}`
     );
     const videoIsLikedJson = await videoIsLiked.json();
     setIsLiked(videoIsLikedJson);
