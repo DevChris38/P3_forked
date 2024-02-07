@@ -185,7 +185,6 @@ const mostLiked = async (req, res, next) => {
 };
 
 const CategoryMostLiked = async (req, res, next) => {
-  console.log("categoryMostLiked");
   const { categoryName } = req.params;
   try {
     const videos = await tables.video.categoryMostLiked(categoryName);
@@ -201,7 +200,6 @@ const CategoryMostLiked = async (req, res, next) => {
 };
 
 const categoryMostView = async (req, res, next) => {
-  console.log("categoryMostLiked");
   const { categoryName } = req.params;
   try {
     const videos = await tables.video.OrderByIdCategory(categoryName);
@@ -212,6 +210,33 @@ const categoryMostView = async (req, res, next) => {
     }
   } catch (err) {
     res.sendStatus(500);
+    next(err);
+  }
+};
+
+const searchTitle = async (req, res, next) => {
+  const { searchRequest } = req.query;
+  try {
+    const video = await tables.video.searchTitle(searchRequest);
+    if (video == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(video);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const countVideo = async (req, res, next) => {
+  try {
+    const video = await tables.video.countVideo();
+    if (video == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(video);
+    }
+  } catch (err) {
     next(err);
   }
 };
@@ -233,4 +258,6 @@ module.exports = {
   mostLiked,
   CategoryMostLiked,
   categoryMostView,
+  searchTitle,
+  countVideo,
 };

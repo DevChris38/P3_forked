@@ -73,6 +73,12 @@ router.delete("/users/deleteUser", userControllers.userDelete);
 router.get("/categories", videoControllers.allCategories);
 router.get("/special/:category", videoControllers.readSpecificCategories);
 
+// route pour la fonctionnalité de recherche
+router.get("/search", videoControllers.searchTitle);
+
+// route pour l'affichage de miniature aleatoire
+router.get("/countVideos", videoControllers.countVideo);
+
 // Authentication wall that allows to protect all routes after that
 router.use(verifyToken);
 
