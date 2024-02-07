@@ -451,7 +451,7 @@ const seed = async () => {
       ["JavaScript"],
       ["css"],
       ["Java"],
-      ["toto"],
+      ["Autre"],
       ["php"],
       ["Python"],
     ];
