@@ -9,35 +9,72 @@ import Miniature from "../../components/miniature/Miniature";
 export default function Categories() {
   const params = useParams();
   const [idVideo, setIdVideos] = useState([]);
-  const tableId = ["tableaux", "fonction", "variables"];
+  const tableId = [];
   const [allVideos, setAllVideos] = useState([]);
+  const [mostView, setMostView] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        tableId.map(async (element, index) => {
-          const response = await fetch(
-            `${
-                import.meta.env.VITE_BACKEND_URL
-              }/api/special/${params.category}?name=${element}`,
-            {
-              credentials: "include",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-
-          if (!response.ok) {
-            throw new Error(`Failed to fetch data: ${response.status}`);
+        // tableId.map(async (element, index) => {
+        const response = await fetch(
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }/api/videosCategoryLikes/${params.category}`,
+          {
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
-          const data = await response.json();
-          setIdVideos((prevIdVideos) => {
-            const newIdVideos = [...prevIdVideos];
-            newIdVideos[index] = data.map((elementId) => elementId.id);
-            return newIdVideos;
-          });
+        );
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+        const data = await response.json();
+        //   setIdVideos(data)
+        setIdVideos((prevIdVideos) => {
+          let newIdVideos = [...prevIdVideos];
+          newIdVideos = data.map((elementId) => elementId.test);
+          return newIdVideos;
         });
+        // });
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // tableId.map(async (element, index) => {
+        const response = await fetch(
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }/api/videosMostViewCategoryLikes/${params.category}`,
+          {
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+        const data = await response.json();
+        //   setIdVideos(data)
+        setMostView((prevIdVideos) => {
+          let newIdVideos = [...prevIdVideos];
+          newIdVideos = data.map((elementId) => elementId.test);
+          return newIdVideos;
+        });
+        // });
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
@@ -73,16 +110,17 @@ export default function Categories() {
     };
     fetchData2();
   }, []);
+  console.log(mostView);
   return (
     <>
       <Navbar />
       <div className={styles[params.category]}>
         <div className={styles.mainContainer}>
           {idVideo.length > 0 ? (
-            <Carrousel title="Tableaux" tableId={idVideo[0]} />
+            <Carrousel title="Most liked" tableId={idVideo} />
           ) : null}
-          {idVideo.length > 1 ? (
-            <Carrousel title="Fonction" tableId={idVideo[1]}/>
+          {mostView.length > 0 ? (
+            <Carrousel title="Most popular" tableId={mostView} />
           ) : null}
           {/* {idVideo.length > 2 ? (
         <Carrousel title="Fonction" tableId={idVideo[2]} />
@@ -97,8 +135,12 @@ export default function Categories() {
                 key={element.id}
               >
                 {" "}
-                {allVideos.length > 0 || allVideos !== undefined ?
-                <Miniature idMiniature={element.id} carouselClass="carousel" /> : null}
+                {allVideos.length > 0 || allVideos !== undefined ? (
+                  <Miniature
+                    idMiniature={element.id}
+                    carouselClass="carousel"
+                  />
+                ) : null}
               </div>
             );
           })}

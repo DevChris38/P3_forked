@@ -173,7 +173,7 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async OrderById() {
-    console.log("coucou")
+    console.log("coucou");
     const [rows] = await this.database.query(
       `SELECT id FROM ${this.table} order by id desc limit 10`
     );
@@ -181,7 +181,7 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async OrderByView() {
-    console.log("coucou")
+    console.log("coucou");
     const [rows] = await this.database.query(
       `SELECT id FROM ${this.table} order by nb_view desc limit 10`
     );
@@ -211,12 +211,43 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async mostLiked() {
-    console.log("salut")
+    console.log("salut");
     const [rows] = await this.database.query(
       `SELECT video_id AS id, COUNT(video_id) AS nombre_occurrences
       FROM likes
       GROUP BY video_id
       ORDER BY nombre_occurrences DESC limit 10`
+    );
+    return rows;
+  }
+  async categoryMostLiked(categoryName) {
+    console.log("salut");
+    const [rows] = await this.database.query(
+      `select video_category.video_id as test from video_category
+      inner join likes on likes.video_id = video_category.video_id 
+      inner join category on category.id = video_category.category_id
+      where category.name = ? group by video_category.video_id`,
+      [categoryName]
+    );
+    return rows;
+  }
+
+  async OrderByViewByCategory() {
+    console.log("coucou");
+    const [rows] = await this.database.query(
+      `SELECT id FROM ${this.table} order by nb_view desc limit 10`
+    );
+    return rows;
+  }
+
+  async OrderByIdCategory(categoryName) {
+    console.log("coucou");
+    const [rows] = await this.database.query(
+      `  select video.id as test from video
+      inner join video_category on video_category.video_id = video.id 
+      inner join category on category.id = video_category.category_id
+      where category.name = ? group by video.id order by video.id desc`,
+      [categoryName]
     );
     return rows;
   }

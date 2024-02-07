@@ -34,6 +34,14 @@ router.get("/videosId", videoControllers.OrderById);
 router.get("/videosView", videoControllers.OrderByView);
 router.get("/videosView", videoControllers.OrderByView);
 router.get("/videoslikes", videoControllers.mostLiked);
+router.get(
+  "/videosCategoryLikes/:categoryName",
+  videoControllers.CategoryMostLiked
+);
+router.get(
+  "/videosMostViewCategoryLikes/:categoryName",
+  videoControllers.categoryMostView
+);
 
 // route qui recupère le titre et l'image de la miniature video
 
@@ -58,7 +66,6 @@ router.delete("/videos/deleteVideo", videoControllers.videoDelete);
 
 // route qui supprime un user
 router.delete("/users/deleteUser", userControllers.userDelete);
-
 
 router.get("/categories", videoControllers.allCategories);
 router.get("/special/:category", videoControllers.readSpecificCategories);
