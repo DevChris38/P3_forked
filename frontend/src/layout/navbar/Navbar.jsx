@@ -4,9 +4,7 @@ import { useInfosContext } from "../../UserContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { userData } = useInfosContext() || {
-    pseudo: "",
-  };
+  const { userData } = useInfosContext();
   const { logout } = useInfosContext();
 
   const handleClickConnexion = () => {
@@ -48,10 +46,10 @@ export default function Navbar() {
         className={styles.btnConnection}
         onClick={userData !== undefined ? handleLogout : handleClickConnexion}
       >
-        {userData.pseudo !== undefined ? "Se Deconnecter" : "Se Connecter"}
+        {userData !== undefined ? "Se Deconnecter" : "Se Connecter"}
       </button>
 
-      {userData.pseudo !== undefined ? (
+      {userData !== undefined ? (
         <input
           className={styles.imgProfil}
           type="image"
