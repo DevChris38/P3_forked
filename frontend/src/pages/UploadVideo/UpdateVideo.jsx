@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../layout/navbar/Navbar";
 import NavMobile from "../../layout/NavMobile/NavMobile";
 import styles from "./uploadVideo.module.css";
 
 function UploadVideo() {
   const params = useParams();
+  const navigate = useNavigate();
   const [videoInfo, setVideoInfo] = useState({
     title: "",
     description: "",
@@ -33,8 +34,8 @@ function UploadVideo() {
     })();
   }, []);
 
-  const handleSubmit = async () => {
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/videos`, {
+  const handleSubmit = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/videos`, {
       method: "PUT",
       body: JSON.stringify({
         title: videoInfo.title,
@@ -43,7 +44,8 @@ function UploadVideo() {
         videoId: params.id,
       }),
       headers: { "Content-Type": "application/json" },
-    });
+    }).then((response) => response.json());
+    navigate(`/video/${params.id}`);
   };
 
   return (

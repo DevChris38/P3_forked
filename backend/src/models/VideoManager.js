@@ -19,7 +19,7 @@ class MainVideoPlayerManager extends AbstractManager {
 
   async readImageById(id) {
     const [rows] = await this.database.query(
-      `SELECT * title FROM ${this.table} where id = ?`,
+      `SELECT * FROM ${this.table} where id = ?`,
       [id]
     );
     return rows[0];
@@ -76,15 +76,16 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async updateVideo(video) {
+    console.error(video);
     const check = await this.database.query(
-      "SELECT * FROM video WHERE user_id = ? AND id = ?",
-      [video.userId, videoId]
+      "SELECT * FROM video WHERE id = ?",
+      [video.videoId]
     );
     if (check[0].length > 0) {
       await this.database.query(
         `update ${this.table}
           set title = ? , description = ? WHERE id= ?`,
-        [title, description, videoId]
+        [video.title, video.description, video.videoId]
       );
     }
   }
