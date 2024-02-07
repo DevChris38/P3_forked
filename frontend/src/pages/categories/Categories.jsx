@@ -17,7 +17,9 @@ export default function Categories() {
       try {
         tableId.map(async (element, index) => {
           const response = await fetch(
-            `http://localhost:3310/api/special/${params.category}?name=${element}`,
+            `${
+                import.meta.env.VITE_BACKEND_URL
+              }/api/special/${params.category}?name=${element}`,
             {
               credentials: "include",
               headers: {
