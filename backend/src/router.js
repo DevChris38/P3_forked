@@ -57,9 +57,6 @@ router.delete("/videos/deleteVideo", videoControllers.videoDelete);
 // route qui supprime un user
 router.delete("/users/deleteUser", userControllers.userDelete);
 
-// route pour recuperer le nombre de video presente dans la BDD
-router.get("/countVideos", videoControllers.countVideo);
-
 // Authentication wall that allows to protect all routes after that
 router.use(verifyToken);
 
