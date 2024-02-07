@@ -49,7 +49,9 @@ export default function Categories() {
     const fetchData2 = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3310/api/videosSelected?category=${params.category}`,
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }/api/videosSelected?category=${params.category}`,
           {
             credentials: "include",
             headers: {
