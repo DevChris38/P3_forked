@@ -186,6 +186,38 @@ const mostLiked = async (req, res, next) => {
   }
 };
 
+const CategoryMostLiked = async (req, res, next) => {
+  console.log("categoryMostLiked");
+  const { categoryName } = req.params;
+  try {
+    const videos = await tables.video.categoryMostLiked(categoryName);
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    res.sendStatus(500);
+    next(err);
+  }
+};
+
+const categoryMostView = async (req, res, next) => {
+  console.log("categoryMostLiked");
+  const { categoryName } = req.params;
+  try {
+    const videos = await tables.video.OrderByIdCategory(categoryName);
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    res.sendStatus(500);
+    next(err);
+  }
+};
+
 module.exports = {
   read,
   readImageById,
