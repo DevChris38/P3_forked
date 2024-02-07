@@ -11,6 +11,7 @@ import UploadVideo from "./pages/UploadVideo/UploadVideo";
 import UpdateVideo from "./pages/UploadVideo/UpdateVideo";
 import User from "./pages/user/User";
 import Categories from "./pages/categories/Categories";
+import SearchBar from "./components/searchBar/SearchBar";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/categories/:category",
     element: <Categories />,
+  },
+  {
+    path: "/search",
+    element: <SearchBar />,
   },
 ]);
 
