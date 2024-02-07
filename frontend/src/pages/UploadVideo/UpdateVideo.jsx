@@ -44,10 +44,13 @@ function UploadVideo() {
         videoId: params.id,
       }),
       headers: { "Content-Type": "application/json" },
-    }).then((response) => response.json());
-    setTimeout(() => {
-      navigate(`/video/${params.id}`);
-    }, "1000");
+    })
+      .then((response) => response.json())
+      .then(() =>
+        setTimeout(() => {
+          navigate(`/video/${params.id}`);
+        }, "1000")
+      );
   };
 
   return (
