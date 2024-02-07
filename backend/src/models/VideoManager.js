@@ -19,7 +19,7 @@ class MainVideoPlayerManager extends AbstractManager {
 
   async readImageById(id) {
     const [rows] = await this.database.query(
-      `SELECT image FROM ${this.table} where id = ?`,
+      `SELECT image, title FROM ${this.table} where id = ?`,
       [id]
     );
     return rows[0];
