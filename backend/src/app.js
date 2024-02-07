@@ -1,6 +1,6 @@
 // Load the express module to create a web application
 const helmet = require("helmet");
-const { expressCspHeader, SELF } = require("express-csp-header");
+const { expressCspHeader, NONE } = require("express-csp-header");
 const express = require("express");
 
 const app = express();
@@ -55,14 +55,14 @@ app.use(express.json());
 app.use(
   expressCspHeader({
     directives: {
-      "frame-ancestors": [SELF],
+      "frame-ancestors": [NONE],
     },
   })
 );
 
 app.use(
   helmet({
-    xFrameOptions: { action: "sameorigin" },
+    xFrameOptions: { action: "deny" },
   })
 );
 // app.use(express.urlencoded());
