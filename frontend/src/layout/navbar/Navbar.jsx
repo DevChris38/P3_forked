@@ -4,7 +4,9 @@ import { useInfosContext } from "../../UserContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { userData } = useInfosContext();
+  const { userData } = useInfosContext() || {
+    pseudo: "",
+  };
   const { logout } = useInfosContext();
 
   const handleClickConnexion = () => {
