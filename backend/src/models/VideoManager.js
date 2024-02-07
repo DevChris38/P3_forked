@@ -26,7 +26,7 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async readByCategories(category, limit) {
-    let sql = `SELECT title, image FROM video
+    let sql = `SELECT title, image, video.id FROM video
     inner join video_category on video_category.video_id = video.id
     inner join category on category.id = video_category.category_id `;
     const sqlValues = [];
@@ -172,12 +172,77 @@ class MainVideoPlayerManager extends AbstractManager {
     return rows[0];
   }
 
-  async countVideo() {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+  async OrderById() {
     const [rows] = await this.database.query(
-      `select id from ${this.table} order by rand() limit 10`
+      `SELECT id FROM ${this.table} order by id desc limit 10`
     );
+    return rows;
+  }
 
+  async OrderByView() {
+    const [rows] = await this.database.query(
+      `SELECT id FROM ${this.table} order by nb_view desc limit 10`
+    );
+    return rows;
+  }
+  async readSpecificCategories(category, name) {
+    const [rows] = await this.database.query(
+      `SELECT video.id
+      FROM video
+      INNER JOIN video_category ON video_category.video_id = video.id
+      INNER JOIN category ON category.id = video_category.category_id
+      WHERE category.name = ?
+      INTERSECT
+  SELECT video.id
+      FROM video
+      INNER JOIN video_category ON video_category.video_id = video.id
+      INNER JOIN category ON category.id = video_category.category_id
+      WHERE category.name = ?`,
+      [category, name]
+    );
+    return rows;
+  }
+
+  async readAllCategories() {
+    const [rows] = await this.database.query(`select name from category`);
+    return rows;
+  }
+
+  async mostLiked() {
+    const [rows] = await this.database.query(
+      `SELECT video_id AS id, COUNT(video_id) AS nombre_occurrences
+      FROM likes
+      GROUP BY video_id
+      ORDER BY nombre_occurrences DESC limit 10`
+    );
+    return rows;
+  }
+  async categoryMostLiked(categoryName) {
+    const [rows] = await this.database.query(
+      `select video_category.video_id as test from video_category
+      inner join likes on likes.video_id = video_category.video_id 
+      inner join category on category.id = video_category.category_id
+      where category.name = ? group by video_category.video_id`,
+      [categoryName]
+    );
+    return rows;
+  }
+
+  async OrderByViewByCategory() {
+    const [rows] = await this.database.query(
+      `SELECT id FROM ${this.table} order by nb_view desc limit 10`
+    );
+    return rows;
+  }
+
+  async OrderByIdCategory(categoryName) {
+    const [rows] = await this.database.query(
+      `  select video.id as test from video
+      inner join video_category on video_category.video_id = video.id 
+      inner join category on category.id = video_category.category_id
+      where category.name = ? group by video.id order by video.id desc`,
+      [categoryName]
+    );
     return rows;
   }
 

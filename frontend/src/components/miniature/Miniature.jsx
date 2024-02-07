@@ -5,6 +5,7 @@ import styles from "./Miniature.module.css";
 
 export default function Miniature({ idMiniature, carouselClass }) {
   const [miniature, setMiniature] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       try {

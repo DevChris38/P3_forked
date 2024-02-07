@@ -7,15 +7,66 @@ import styles from "./Carrousel.module.css";
 import PrevButton from "../SliderOption/PrevButton/PrevButton";
 import NextButton from "../SliderOption/NextButton/NextButton";
 
-export default function Carrousel({ title }) {
+export default function Carrousel({ title, tableId, categorie }) {
+  const [miniatureId, setMiniatureId] = useState([]);
+  const [idFetch, setIdfetch] = useState("");
+
+  const idView = "/api/videosView";
+  const idLasted = "/api/videosId";
+  const idLiked = "/api/videoslikes";
+
+  useEffect(() => {
+    if (tableId.length > 0) {
+      setMiniatureId(tableId);
+    }
+    if (categorie === "view") {
+      setIdfetch(idView);
+    } else if (categorie === "last") {
+      setIdfetch(idLasted);
+    } else if (categorie === "like") {
+      setIdfetch(idLiked);
+    } else if (categorie === null || undefined) {
+      setIdfetch("/api/videosId");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (idFetch !== "") {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            `${import.meta.env.VITE_BACKEND_URL}${idFetch}`,
+            {
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.status}`);
+          }
+
+          const data = await response.json();
+          setMiniatureId((prevIdVideos) => {
+            let newIdVideos = [...prevIdVideos];
+            newIdVideos = data.map((elementId) => elementId.id);
+            return newIdVideos;
+          });
+        } catch (error) {
+          console.error("Error fetching data:", error.message);
+          // Handle the error here, e.g., set a default value or display an error message
+        }
+      };
+      fetchData();
+    }
+  }, [idFetch]);
   const OPTIONS = {
     slidesToScroll: "auto",
     containScroll: "trimSnaps",
     dragFree: true,
   };
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS);
-  // tabl img will goes replace with an table id will passed trhough link for call bdd
-  const tableId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -54,33 +105,35 @@ export default function Carrousel({ title }) {
       <p className={styles.carousel__embla__title}>{title}</p>
       <div className={styles.carousel__embla__viewport} ref={emblaRef}>
         <div className={styles.carousel__embla__viewport__container}>
-          {tableId.map((element, index) => (
-            <div
-              className={styles.carousel__embla__viewport__container__slide}
-              key={element}
-            >
-              <div
-                className={
-                  styles.carousel__embla__viewport__container__slide__number
-                }
-              >
-                <span key={element}>{index + 1}</span>
-              </div>
-              <Link
-                to={{
-                  pathname: `/video/${element}`,
-                }}
-              >
-                <Miniature
-                  className={
-                    styles.carousel__embla__viewport__container__slide__img
-                  }
-                  idMiniature={element}
-                  carouselClass="carousel"
-                />
-              </Link>
-            </div>
-          ))}
+          {tableId !== undefined
+            ? miniatureId.map((element, index) => (
+                <div
+                  className={styles.carousel__embla__viewport__container__slide}
+                  key={element}
+                >
+                  <div
+                    className={
+                      styles.carousel__embla__viewport__container__slide__number
+                    }
+                  >
+                    <span key={element}>{index + 1}</span>
+                  </div>
+                  <Link
+                    to={{
+                      pathname: `/video/${element}`,
+                    }}
+                  >
+                    <Miniature
+                      className={
+                        styles.carousel__embla__viewport__container__slide__img
+                      }
+                      idMiniature={element}
+                      carouselClass="carousel"
+                    />
+                  </Link>
+                </div>
+              ))
+            : null}
         </div>
         <div className={styles.carousel__embla__viewport__buttons}>
           <PrevButton
@@ -104,4 +157,5 @@ export default function Carrousel({ title }) {
 
 Carrousel.propTypes = {
   title: PropTypes.string.isRequired,
+  tableId: PropTypes.arrayOf(PropTypes.number).isRequired,
 };

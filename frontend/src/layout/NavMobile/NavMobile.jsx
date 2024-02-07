@@ -3,31 +3,31 @@ import styles from "./NavMobile.module.css";
 export default function NavMobile() {
   const icon = [
     {
-      src: "src/assets/home.svg",
+      src: "/home.svg",
       alt: "home logo",
       id: 1,
       path: "/",
     },
     {
-      src: "src/assets/search.svg",
+      src: "/search.svg",
       alt: "search logo",
       id: 2,
       path: "#path for eslint",
     },
     {
-      src: "src/assets/circle.svg",
+      src: "/circle.svg",
       alt: "add circle logo",
       id: 3,
       path: "/upload",
     },
     {
-      src: "src/assets/favorite.svg",
+      src: "/favorite.svg",
       alt: "favorite logo",
       id: 4,
       path: "/user",
     },
     {
-      src: "src/assets/account.svg",
+      src: "/account.svg",
       alt: "profile logo",
       id: 5,
       path: "/user",

@@ -1,0 +1,60 @@
+.css {
+  background: linear-gradient(rgb(76, 164, 221), rgb(0, 70, 149));
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.Java {
+  background: linear-gradient(rgb(255, 0, 0), rgb(187, 0, 0));
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+
+.Python {
+  background: linear-gradient(rgb(255, 213, 39), rgb(42, 114, 169));
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+
+.php {
+  background-color: rgb(130, 142, 210);
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+
+.JavaScript {
+  background: linear-gradient(rgb(255, 179, 0), rgb(255, 217, 0));
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+
+.miniatureContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  gap: 3rem;
+  margin-left: 3%;
+  margin-right: 10%;
+}
+.miniatureContainer__miniature {
+  width: 20%;
+}
+
+.title {
+  margin-top: 5%;
+  margin-left: 3%;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 3%;
+}/*# sourceMappingURL=Categories.module.css.map */

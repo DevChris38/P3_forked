@@ -27,14 +27,16 @@ function VideoPage() {
     })();
   }, [getCategory]);
 
-  const categories = ["Javascript", "php", "Python", "Java", "css"];
+  const categories = ["JavaScript", "php", "Python", "Java", "css"];
 
   return (
     <div className={styles.mainButtonsContainer}>
       <div className={styles.buttonsContainer}>
         {categories.map((category) => (
           <Link
-            to="/"
+            to={{
+              pathname: `/categories/${category}`,
+            }}
             id={styles[category]}
             className={styles.buttonsContainer__category}
             type="button"

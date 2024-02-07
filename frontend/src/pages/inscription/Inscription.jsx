@@ -162,7 +162,7 @@ function Inscription() {
             >
               <input
                 type="image"
-                src="/src/assets/avatarAbstrait.jpg"
+                src="/avatarAbstrait.jpg"
                 alt="avatarAbstrait"
                 onClick={(e) => {
                   e.preventDefault();
@@ -171,7 +171,7 @@ function Inscription() {
               />
               <input
                 type="image"
-                src="/src/assets/avatarOurs.jpg"
+                src="/avatarOurs.jpg"
                 alt="avatarOurs"
                 onClick={(e) => {
                   e.preventDefault();
@@ -180,7 +180,7 @@ function Inscription() {
               />
               <input
                 type="image"
-                src="/src/assets/avatarRobot.jpg"
+                src="/avatarRobot.jpg"
                 alt="avataravatarRobot"
                 onClick={(e) => {
                   e.preventDefault();
@@ -189,7 +189,7 @@ function Inscription() {
               />
               <input
                 type="image"
-                src="/src/assets/avatarVoiture.jpg"
+                src="/avatarVoiture.jpg"
                 alt="avatarVoiture"
                 onClick={(e) => {
                   e.preventDefault();

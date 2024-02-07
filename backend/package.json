@@ -4,6 +4,7 @@
     "db:migrate": "node migrate.js",
     "db:seed": "node seed.js",
     "start": "node index.js",
+    "build": "",
     "test": "jest",
     "prettierC": "prettier -c src",
     "prettierW": "prettier -w src"
