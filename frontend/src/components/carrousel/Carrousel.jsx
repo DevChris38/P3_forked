@@ -8,61 +8,58 @@ import PrevButton from "../SliderOption/PrevButton/PrevButton";
 import NextButton from "../SliderOption/NextButton/NextButton";
 
 export default function Carrousel({ title, tableId, categorie }) {
-  const [miniatureId, setMiniatureId] = useState([])
-  const [idFetch, setIdfetch] = useState("")
+  const [miniatureId, setMiniatureId] = useState([]);
+  const [idFetch, setIdfetch] = useState("");
 
   const idView = "/api/videosView";
   const idLasted = "/api/videosId";
-  const idLiked = "/api/videoslikes"
+  const idLiked = "/api/videoslikes";
 
   useEffect(() => {
-
-    if(tableId.length > 0){
-     setMiniatureId(tableId)
+    if (tableId.length > 0) {
+      setMiniatureId(tableId);
     }
-    if(categorie === "view"){
-    setIdfetch(idView)
-  } else if(categorie === "last"){
-    setIdfetch(idLasted)
-  } else if(categorie === "like"){
-    setIdfetch(idLiked)
-  } else if (categorie === null || undefined){
-    setIdfetch("/api/videosId")
-  }
-}, []);
+    if (categorie === "view") {
+      setIdfetch(idView);
+    } else if (categorie === "last") {
+      setIdfetch(idLasted);
+    } else if (categorie === "like") {
+      setIdfetch(idLiked);
+    } else if (categorie === null || undefined) {
+      setIdfetch("/api/videosId");
+    }
+  }, []);
 
   useEffect(() => {
-    if(idFetch !== ""){
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `${
-            import.meta.env.VITE_BACKEND_URL
-          }${idFetch}`,
-          {
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
+    if (idFetch !== "") {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            `${import.meta.env.VITE_BACKEND_URL}${idFetch}`,
+            {
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.status}`);
           }
-        );
-        if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.status}`);
-        }
 
-        const data = await response.json();
-        setMiniatureId((prevIdVideos) => {
-          let newIdVideos = [...prevIdVideos];
-          newIdVideos = data.map((elementId) => elementId.id);
-          return newIdVideos;
-        });
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-        // Handle the error here, e.g., set a default value or display an error message
-      }
-    };
-    fetchData();
-  }
+          const data = await response.json();
+          setMiniatureId((prevIdVideos) => {
+            let newIdVideos = [...prevIdVideos];
+            newIdVideos = data.map((elementId) => elementId.id);
+            return newIdVideos;
+          });
+        } catch (error) {
+          console.error("Error fetching data:", error.message);
+          // Handle the error here, e.g., set a default value or display an error message
+        }
+      };
+      fetchData();
+    }
   }, [idFetch]);
   const OPTIONS = {
     slidesToScroll: "auto",

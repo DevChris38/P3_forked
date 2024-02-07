@@ -122,32 +122,32 @@ const readByUserId = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-}
-  
-  const OrderById = async (req, res, next) => {
-    try {
-      const videos = await tables.video.OrderById();
-      if (videos === null) {
-        res.sendStatus(404);
-      } else {
-        res.json(videos);
-      }
-    } catch (err) {
-      next(err);
-    }
-  }
+};
 
-    const OrderByView = async (req, res, next) => {
-      try {
-        const videos = await tables.video.OrderByView();
-        if (videos === null) {
-          res.sendStatus(404);
-        } else {
-          res.json(videos);
-        }
-      } catch (err) {
-        next(err);
-      }
+const OrderById = async (req, res, next) => {
+  try {
+    const videos = await tables.video.OrderById();
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const OrderByView = async (req, res, next) => {
+  try {
+    const videos = await tables.video.OrderByView();
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    next(err);
+  }
 };
 
 const allCategories = async (req, res, next) => {
@@ -174,7 +174,7 @@ const readSpecificCategories = async (req, res) => {
 };
 
 const mostLiked = async (req, res, next) => {
-  console.log("coucou")
+  console.log("coucou");
   try {
     const videos = await tables.video.mostLiked();
     if (videos === null) {
@@ -183,10 +183,42 @@ const mostLiked = async (req, res, next) => {
       res.json(videos);
     }
   } catch (err) {
-    res.sendStatus(500)
-    next(err)
+    res.sendStatus(500);
+    next(err);
   }
-}
+};
+
+const CategoryMostLiked = async (req, res, next) => {
+  console.log("categoryMostLiked");
+  const { categoryName } = req.params;
+  try {
+    const videos = await tables.video.categoryMostLiked(categoryName);
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    res.sendStatus(500);
+    next(err);
+  }
+};
+
+const categoryMostView = async (req, res, next) => {
+  console.log("categoryMostLiked");
+  const { categoryName } = req.params;
+  try {
+    const videos = await tables.video.OrderByIdCategory(categoryName);
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    res.sendStatus(500);
+    next(err);
+  }
+};
 
 module.exports = {
   read,
@@ -203,4 +235,6 @@ module.exports = {
   allCategories,
   readSpecificCategories,
   mostLiked,
+  CategoryMostLiked,
+  categoryMostView,
 };
