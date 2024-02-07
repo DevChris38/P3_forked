@@ -10,7 +10,7 @@ class MainVideoPlayerManager extends AbstractManager {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
-      `SELECT title, link, image, description, nb_view, pseudo, count(*) as nbr_like from ${this.table} INNER JOIN user ON user.id = video.user_id INNER JOIN likes WHERE video.id =?`,
+      `SELECT ${this.table}.id, title, link, image, description, nb_view, pseudo, count(*) as nbr_like from ${this.table} INNER JOIN user ON user.id = video.user_id INNER JOIN likes WHERE video.id =?`,
       [id]
     );
 
@@ -173,7 +173,7 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async OrderById() {
-    console.log("coucou")
+    console.log("coucou");
     const [rows] = await this.database.query(
       `SELECT id FROM ${this.table} order by id desc limit 10`
     );
@@ -181,7 +181,7 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async OrderByView() {
-    console.log("coucou")
+    console.log("coucou");
     const [rows] = await this.database.query(
       `SELECT id FROM ${this.table} order by nb_view desc limit 10`
     );
@@ -211,7 +211,7 @@ class MainVideoPlayerManager extends AbstractManager {
   }
 
   async mostLiked() {
-    console.log("salut")
+    console.log("salut");
     const [rows] = await this.database.query(
       `SELECT video_id AS id, COUNT(video_id) AS nombre_occurrences
       FROM likes
