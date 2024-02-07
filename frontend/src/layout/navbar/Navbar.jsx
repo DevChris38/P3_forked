@@ -42,18 +42,22 @@ export default function Navbar() {
         className={styles.btnConnection}
         onClick={userData !== undefined ? handleLogout : handleClickConnexion}
       >
-        {userData !== undefined ? "Se Deconnecter" : "Se Connecter"}
+        {userData.pseudo !== undefined ? "Se Deconnecter" : "Se Connecter"}
       </button>
 
-      <input
-        className={styles.imgProfil}
-        type="image"
-        src={`/${userData.avatar}`}
-        alt="avatarVoiture"
-        onClick={() => {
-          navigate("/user");
-        }}
-      />
+      {userData.pseudo !== undefined ? (
+        <input
+          className={styles.imgProfil}
+          type="image"
+          src={`/${userData.avatar}`}
+          alt="avatarVoiture"
+          onClick={() => {
+            navigate("/user");
+          }}
+        />
+      ) : (
+        <img className={styles.imgProfil} src="/account.svg" alt="" />
+      )}
     </nav>
   );
 }

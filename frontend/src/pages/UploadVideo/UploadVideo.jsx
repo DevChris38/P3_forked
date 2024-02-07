@@ -14,6 +14,7 @@ import Navbar from "../../layout/navbar/Navbar";
 import NavMobile from "../../layout/NavMobile/NavMobile";
 import styles from "./uploadVideo.module.css";
 import arrayCategories from "./arrayCategories";
+import { useInfosContext } from "../../UserContext";
 
 function UploadVideo() {
   // données sur notre compte Firebase
@@ -26,6 +27,8 @@ function UploadVideo() {
     appId: import.meta.env.VITE_APP_ID,
   });
 
+  const { userData } = useInfosContext();
+
   // initialisation de l'objet qui sera envoyé à la BDD
   const [video, setVideo] = useState({
     name: "",
@@ -34,7 +37,7 @@ function UploadVideo() {
     miniatureUrl: "",
     categories: [],
     weight: 0,
-    userId: 1,
+    userId: userData.id,
   });
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
