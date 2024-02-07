@@ -171,6 +171,15 @@ class MainVideoPlayerManager extends AbstractManager {
     );
     return rows[0];
   }
+
+  async countVideo() {
+    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    const [rows] = await this.database.query(
+      `select id from ${this.table} order by rand() limit 10`
+    );
+
+    return rows;
+  }
 }
 
 module.exports = MainVideoPlayerManager;
