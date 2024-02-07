@@ -63,7 +63,6 @@ app.use(
 app.use(
   helmet({
     xFrameOptions: { action: "sameorigin" },
-    xContentTypeOptions: false,
   })
 );
 // app.use(express.urlencoded());
