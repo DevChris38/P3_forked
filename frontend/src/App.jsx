@@ -13,11 +13,11 @@ function App() {
   return (
     <>
       <Navbar />
-      <HeroSlider />
+      <HeroSlider />x
       <Boutons />
-      <Carrousel title={title1} tableId={tableId} />
-      <Carrousel title={title2} tableId={tableId}/>
-      <Carrousel title={title3} tableId={tableId}/>
+      <Carrousel title={title1} tableId={tableId} categorie="last" />
+      <Carrousel title={title2} tableId={tableId} categorie="view"/>
+      <Carrousel title={title3} tableId={tableId} categorie="like"/>
       <NavMobile />
     </>
   );

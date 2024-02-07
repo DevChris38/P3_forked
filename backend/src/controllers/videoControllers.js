@@ -122,7 +122,71 @@ const readByUserId = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+}
+  
+  const OrderById = async (req, res, next) => {
+    try {
+      const videos = await tables.video.OrderById();
+      if (videos === null) {
+        res.sendStatus(404);
+      } else {
+        res.json(videos);
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
+
+    const OrderByView = async (req, res, next) => {
+      try {
+        const videos = await tables.video.OrderByView();
+        if (videos === null) {
+          res.sendStatus(404);
+        } else {
+          res.json(videos);
+        }
+      } catch (err) {
+        next(err);
+      }
 };
+
+const allCategories = async (req, res, next) => {
+  try {
+    const videoCategories = await tables.video.readAllCategories();
+    res.status(200).send(videoCategories);
+  } catch (err) {
+    res.status(500).send(err.message);
+    next(err);
+  }
+};
+const readSpecificCategories = async (req, res) => {
+  try {
+    const { name } = req.query;
+    const { category } = req.params;
+    const videoCategories = await tables.video.readSpecificCategories(
+      category,
+      name
+    );
+    res.status(200).send(videoCategories);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
+
+const mostLiked = async (req, res, next) => {
+  console.log("coucou")
+  try {
+    const videos = await tables.video.mostLiked();
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    res.sendStatus(500)
+    next(err)
+  }
+}
 
 module.exports = {
   read,
@@ -134,4 +198,9 @@ module.exports = {
   ModifyVideo,
   uploadVideo,
   readByUserId,
+  OrderById,
+  OrderByView,
+  allCategories,
+  readSpecificCategories,
+  mostLiked,
 };

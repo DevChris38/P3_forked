@@ -78,7 +78,7 @@ export default function Categories() {
             <Carrousel title="Tableaux" tableId={idVideo[0]} />
           ) : null}
           {idVideo.length > 1 ? (
-            <Carrousel title="Fonction" tableId={idVideo[1]} />
+            <Carrousel title="Fonction" tableId={idVideo[1]}/>
           ) : null}
           {/* {idVideo.length > 2 ? (
         <Carrousel title="Fonction" tableId={idVideo[2]} />
@@ -93,7 +93,8 @@ export default function Categories() {
                 key={element.id}
               >
                 {" "}
-                <Miniature idMiniature={element.id} carouselClass="carousel" />
+                {allVideos.length > 0 || allVideos !== undefined ?
+                <Miniature idMiniature={element.id} carouselClass="carousel" /> : null}
               </div>
             );
           })}
