@@ -46,7 +46,7 @@ function VideoUser({ id, notifyError, notifySuccessDeleteVideo }) {
   };
 
   const handleClickEdit = (idModifyVideo) => {
-    navigate("/upload", { state: { id: idModifyVideo } });
+    navigate(`/update/${idModifyVideo}`);
   };
 
   return (
