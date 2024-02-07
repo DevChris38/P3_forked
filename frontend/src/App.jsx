@@ -16,8 +16,8 @@ function App() {
       <HeroSlider />x
       <Boutons />
       <Carrousel title={title1} tableId={tableId} categorie="last" />
-      <Carrousel title={title2} tableId={tableId} categorie="view"/>
-      <Carrousel title={title3} tableId={tableId} categorie="like"/>
+      <Carrousel title={title2} tableId={tableId} categorie="view" />
+      <Carrousel title={title3} tableId={tableId} categorie="like" />
       <NavMobile />
     </>
   );

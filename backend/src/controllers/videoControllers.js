@@ -201,4 +201,6 @@ module.exports = {
   allCategories,
   readSpecificCategories,
   mostLiked,
+  CategoryMostLiked,
+  categoryMostView,
 };
