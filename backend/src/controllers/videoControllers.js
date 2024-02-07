@@ -174,7 +174,6 @@ const readSpecificCategories = async (req, res) => {
 };
 
 const mostLiked = async (req, res, next) => {
-  console.log("coucou");
   try {
     const videos = await tables.video.mostLiked();
     if (videos === null) {
@@ -189,7 +188,6 @@ const mostLiked = async (req, res, next) => {
 };
 
 const CategoryMostLiked = async (req, res, next) => {
-  console.log("categoryMostLiked");
   const { categoryName } = req.params;
   try {
     const videos = await tables.video.categoryMostLiked(categoryName);
@@ -205,7 +203,6 @@ const CategoryMostLiked = async (req, res, next) => {
 };
 
 const categoryMostView = async (req, res, next) => {
-  console.log("categoryMostLiked");
   const { categoryName } = req.params;
   try {
     const videos = await tables.video.OrderByIdCategory(categoryName);

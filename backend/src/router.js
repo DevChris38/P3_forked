@@ -34,10 +34,7 @@ router.get("/videosId", videoControllers.OrderById);
 router.get("/videosView", videoControllers.OrderByView);
 router.get("/videosView", videoControllers.OrderByView);
 router.get("/videoslikes", videoControllers.mostLiked);
-router.get(
-  "/videosCategoryLikes/:categoryName",
-  videoControllers.CategoryMostLiked
-);
+router.get("/videosCategoryLikes/:categoryName", videoControllers.CategoryMostLiked);
 router.get(
   "/videosMostViewCategoryLikes/:categoryName",
   videoControllers.categoryMostView
