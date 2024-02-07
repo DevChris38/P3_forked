@@ -21,6 +21,7 @@ function ScrollingMiniatures() {
       setDisplay(videoResult);
     })();
   }, []);
+
   if (display !== "") {
     return (
       <div id={styles.scrollingMiniatures}>

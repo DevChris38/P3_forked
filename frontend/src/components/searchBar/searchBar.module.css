@@ -21,17 +21,16 @@
   line-height: normal;
   margin: 20px;
 }
-.searchBarPage__propositionEmpty {
-  display: none;
-}
-.searchBarPage__propositions {
+
+#scrollingMiniatures {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
-.searchBarPage__propositions__li {
-  background-color: rgba(63, 76, 103, 0.7);
-  border: 2px solid #20212f;
-  height: 16px;
+#scrollingMiniatures__miniature {
+  width: 350px;
+  margin: 2%;
 }
 
 /*# sourceMappingURL=searchBar.module.css.map */

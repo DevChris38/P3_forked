@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "./searchBar.module.css";
 import Navbar from "../../layout/navbar/Navbar";
+import Miniature from "../miniature/Miniature";
 
 function SearchBar() {
   const [search, setSearch] = useState("");
@@ -46,24 +48,25 @@ function SearchBar() {
         />
       </div>
       <div id={styles.scrollingMiniatures}>
-        {{searchResponse.map((number) => {
-          return (
-            <div id={styles.scrollingMiniatures__miniature} key={number.id}>
-              <Link
-                to={{
-                  pathname: `/video/${number.id}`,
-                  state: { number },
-                }}
-              >
-                <Miniature
-                  idMiniature={number.id}
-                  key={number.id}
-                  carouselClass="videoSlider"
-                />
-              </Link>
-            </div>
-          );
-        })}}
+        {search !== "" &&
+          searchResponse.map((number) => {
+            return (
+              <div id={styles.scrollingMiniatures__miniature} key={number.id}>
+                <Link
+                  to={{
+                    pathname: `/video/${number.id}`,
+                    state: { number },
+                  }}
+                >
+                  <Miniature
+                    idMiniature={number.id}
+                    key={number.id}
+                    carouselClass="videoSlider"
+                  />
+                </Link>
+              </div>
+            );
+          })}
       </div>
     </>
   );

@@ -23,21 +23,17 @@
     margin: 20px
     }
 
-    &__propositionEmpty {
-        display: none;
-    }
-    
-    &__propositions {
-        display: flex;
-        flex-direction: column;
-
-        &__li {
-            background-color: rgb(63, 76, 103, 0.7);
-            border: 2px solid #20212f;
-            height: 16px;
-        }
-    }
 }
 
+#scrollingMiniatures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 
+    &__miniature {
+        width: 350px;
+        margin: 2%;
+    }
+}
 
