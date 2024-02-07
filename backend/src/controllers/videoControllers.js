@@ -67,11 +67,8 @@ const isLikedByUser = async (req, res, next) => {
 };
 const ModifyVideo = async (req, res, next) => {
   try {
-    const { title } = req.body;
-    const { description } = req.body;
-    const { videoId } = req.body;
-    const { userId } = req.body;
-    await tables.video.updateVideo(title, description, videoId, userId);
+    const video = req.body;
+    await tables.video.updateVideo(video);
     res.status(200).send("video was updated");
   } catch (err) {
     console.error(err);
@@ -122,32 +119,32 @@ const readByUserId = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-}
-  
-  const OrderById = async (req, res, next) => {
-    try {
-      const videos = await tables.video.OrderById();
-      if (videos === null) {
-        res.sendStatus(404);
-      } else {
-        res.json(videos);
-      }
-    } catch (err) {
-      next(err);
-    }
-  }
+};
 
-    const OrderByView = async (req, res, next) => {
-      try {
-        const videos = await tables.video.OrderByView();
-        if (videos === null) {
-          res.sendStatus(404);
-        } else {
-          res.json(videos);
-        }
-      } catch (err) {
-        next(err);
-      }
+const OrderById = async (req, res, next) => {
+  try {
+    const videos = await tables.video.OrderById();
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const OrderByView = async (req, res, next) => {
+  try {
+    const videos = await tables.video.OrderByView();
+    if (videos === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    next(err);
+  }
 };
 
 const allCategories = async (req, res, next) => {
@@ -174,7 +171,7 @@ const readSpecificCategories = async (req, res) => {
 };
 
 const mostLiked = async (req, res, next) => {
-  console.log("coucou")
+  console.log("coucou");
   try {
     const videos = await tables.video.mostLiked();
     if (videos === null) {
@@ -183,10 +180,10 @@ const mostLiked = async (req, res, next) => {
       res.json(videos);
     }
   } catch (err) {
-    res.sendStatus(500)
-    next(err)
+    res.sendStatus(500);
+    next(err);
   }
-}
+};
 
 module.exports = {
   read,

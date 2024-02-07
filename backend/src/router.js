@@ -47,7 +47,7 @@ router.put("/videos/:id/like/:user", videoControllers.likeVideo);
 router.get("/videos/:id/like/:user", videoControllers.isLikedByUser);
 
 // route qui ajoute une nouvelle video
-router.post("/videos/upload", videoControllers.uploadVideo);
+router.post("/videos", videoControllers.uploadVideo);
 
 // Routes to get user informations or add a new user
 router.get("/users/:id", userControllers.read);
