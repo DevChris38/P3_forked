@@ -28,7 +28,8 @@
   display: block;
   height: var(--slide-height);
   width: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   filter: drop-shadow(0 20px 0.75rem black);
   padding-bottom: 10%;
   border-radius: 5px;
@@ -136,6 +137,4 @@
     margin-right: 0.75rem;
     margin-left: 0.75rem;
   }
-}
-
-/*# sourceMappingURL=HeroSlider.module.css.map */
+}/*# sourceMappingURL=HeroSlider.module.css.map */

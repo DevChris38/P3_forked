@@ -17,7 +17,7 @@
 .uploadVideoContainer__form input {
   margin-bottom: 5%;
 }
-.uploadVideoContainer__form input[type="file"] {
+.uploadVideoContainer__form input[type=file] {
   background-color: rgba(32, 33, 47, 0);
   max-width: 200px;
   margin: 2rem 0;
@@ -171,4 +171,4 @@ img {
   width: fit-content;
   font-size: 1.5rem;
   margin: 5% 5%;
-} /*# sourceMappingURL=uploadVideo.module.css.map */
+}/*# sourceMappingURL=uploadVideo.module.css.map */
