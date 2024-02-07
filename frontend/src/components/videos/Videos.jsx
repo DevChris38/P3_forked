@@ -15,7 +15,6 @@ function Videos({ videoInfo }) {
   }, [isLiked]);
 
   const handleLike = async () => {
-    console.log(videoInfo);
     await fetch(
       `${import.meta.env.VITE_BACKEND_URL}/api/videos/${videoInfo.id}/like/${userData.id}`,
       {
@@ -48,7 +47,6 @@ function Videos({ videoInfo }) {
           <h3>{videoInfo.pseudo}</h3>
         </div>
         <div id={styles.informations__likes}>
-          <p>vues : {videoInfo.nb_view}</p>
           <button
             type="button"
             id={styles.informations__likes__button}
