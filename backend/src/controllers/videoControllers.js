@@ -68,7 +68,6 @@ const isLikedByUser = async (req, res, next) => {
 const ModifyVideo = async (req, res, next) => {
   try {
     const video = req.body;
-    console.log(video);
     await tables.video.updateVideo(video);
     res.status(200).send("video was updated");
   } catch (err) {
@@ -172,7 +171,6 @@ const readSpecificCategories = async (req, res) => {
 };
 
 const mostLiked = async (req, res, next) => {
-  console.log("coucou");
   try {
     const videos = await tables.video.mostLiked();
     if (videos === null) {
