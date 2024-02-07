@@ -9,6 +9,7 @@ import Connexion from "./pages/connexion/Connexion";
 import Inscription from "./pages/inscription/Inscription";
 import UploadVideo from "./pages/UploadVideo/UploadVideo";
 import User from "./pages/user/User";
+import SearchBar from "./components/searchBar/SearchBar";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/user",
     element: <User />,
+  },
+  {
+    path: "/search",
+    element: <SearchBar />,
   },
 ]);
 

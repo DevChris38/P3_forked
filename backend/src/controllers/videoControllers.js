@@ -137,6 +137,20 @@ const countVideo = async (req, res, next) => {
   }
 };
 
+const searchTitle = async (req, res, next) => {
+  const { searchRequest } = req.query;
+  try {
+    const video = await tables.video.searchTitle(searchRequest);
+    if (video == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(video);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   read,
   readImageById,
@@ -148,4 +162,5 @@ module.exports = {
   uploadVideo,
   readByUserId,
   countVideo,
+  searchTitle,
 };

@@ -60,6 +60,8 @@ router.delete("/users/deleteUser", userControllers.userDelete);
 // route pour recuperer le nombre de video presente dans la BDD
 router.get("/countVideos", videoControllers.countVideo);
 
+router.get("/search", videoControllers.searchTitle);
+
 // Authentication wall that allows to protect all routes after that
 router.use(verifyToken);
 

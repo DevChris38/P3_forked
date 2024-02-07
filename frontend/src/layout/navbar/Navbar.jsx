@@ -35,7 +35,11 @@ export default function Navbar() {
             Ajouter une video
           </Link>
         </li>
-        <li />
+        <li>
+          <Link to="/search" className={styles.navbar}>
+            Rechercher
+          </Link>
+        </li>
       </ul>
       <button
         type="button"

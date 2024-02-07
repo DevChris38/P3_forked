@@ -9,6 +9,7 @@ function App() {
   const title1 = "Dernieres Sorties";
   const title2 = "Les Plus Populaire";
   const title3 = "Les Plus Plebicites";
+
   return (
     <>
       <Navbar />

@@ -1,0 +1,37 @@
+.searchBarHidden {
+  display: none;
+}
+
+.searchBarPage {
+  width: 100%;
+}
+.searchBarPage__searchBar {
+  width: 100%;
+  border-radius: 0;
+  height: 80px;
+  background: linear-gradient(#727DBA, #3F4C67);
+  color: white;
+  font-size: 30pt;
+}
+.searchBarPage__searchBar::placeholder {
+  font-weight: bolder;
+  color: white;
+  font-size: 30pt;
+  margin: 3%;
+  line-height: normal;
+  margin: 20px;
+}
+.searchBarPage__propositionEmpty {
+  display: none;
+}
+.searchBarPage__propositions {
+  display: flex;
+  flex-direction: column;
+}
+.searchBarPage__propositions__li {
+  background-color: rgba(63, 76, 103, 0.7);
+  border: 2px solid #20212f;
+  height: 16px;
+}
+
+/*# sourceMappingURL=searchBar.module.css.map */
