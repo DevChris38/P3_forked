@@ -215,7 +215,8 @@ function Inscription() {
                   ranges[2].state === "" ||
                   ranges[3].state === "" ||
                   ranges[4].state === "" ||
-                  ranges[5].state === ""
+                  ranges[5].state === "" ||
+                  donnees.avatar === ""
                 }
               >
                 Inscription
