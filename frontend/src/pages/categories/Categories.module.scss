@@ -4,60 +4,59 @@
 // }
 
 .css {
-    background: linear-gradient(rgba(76, 164, 221, 1), rgba(0, 70, 149, 1));
-    width: 100%;
-    height: 100%;
-    padding-top: 5%;
+  background: linear-gradient(rgba(76, 164, 221, 1), rgba(0, 70, 149, 1));
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.Java {
+  background: linear-gradient(rgba(255, 0, 0, 1), rgba(187, 0, 0, 1));
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+.Python {
+  background: linear-gradient(rgba(255, 213, 39, 1), rgba(42, 114, 169, 1));
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+.php {
+  background-color: rgba(130, 142, 210, 1);
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+.JavaScript {
+  background: linear-gradient(rgb(255, 179, 0), rgb(255, 217, 0));
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+}
+
+.miniatureContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  gap: 3rem;
+  margin-left: 3%;
+  margin-right: 10%;
+
+  &__miniature {
+    width: 20%;
   }
-  .mainContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
-  }
-  
-  .Java {
-    background: linear-gradient(rgba(255, 0, 0, 1), rgba(187, 0, 0, 1));
-    width: 100%;
-    height: 100%;
-    padding-top: 5%;
-  }
-  .Python {
-    background: linear-gradient(rgba(255, 213, 39, 1), rgba(42, 114, 169, 1));
-    width: 100%;
-    height: 100%;
-    padding-top: 5%;
-  }
-  .php {
-    background-color: rgba(130, 142, 210, 1);
-    width: 100%;
-    height: 100%;
-    padding-top: 5%;
-  }
-  .JavaScript {
-    background: linear-gradient(rgb(255, 179, 0), rgb(255, 217, 0));
-    width: 100%;
-    height: 100%;
-    padding-top: 5%;
-  }
-  
-  .miniatureContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100vw;
-    gap: 3rem;
-    margin-left: 3%;
-    margin-right: 10%;
-  
-    &__miniature {
-      width: 20%;
-    }
-  }
-  
-  .title {
-    margin-top: 5%;
-    margin-left: 3%;
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 3%;
-  }
-  
+}
+
+.title {
+  margin-top: 5%;
+  margin-left: 3%;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 3%;
+}
