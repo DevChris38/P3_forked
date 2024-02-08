@@ -1,0 +1,36 @@
+.searchBarHidden {
+  display: none;
+}
+
+.searchBarPage {
+  width: 100%;
+}
+.searchBarPage__searchBar {
+  width: 100%;
+  border-radius: 0;
+  height: 80px;
+  background: linear-gradient(#727DBA, #3F4C67);
+  color: white;
+  font-size: 30pt;
+}
+.searchBarPage__searchBar::placeholder {
+  font-weight: bolder;
+  color: white;
+  font-size: 30pt;
+  margin: 3%;
+  line-height: normal;
+  margin: 20px;
+}
+
+#scrollingMiniatures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+#scrollingMiniatures__miniature {
+  width: 350px;
+  margin: 2%;
+}
+
+/*# sourceMappingURL=searchBar.module.css.map */
