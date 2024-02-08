@@ -1,5 +1,6 @@
 .videoUserComponent {
   color: white;
+  width: 31vw;
 
   &__oneVideo {
     display: flex;
@@ -27,6 +28,7 @@
 
           &__singleButton {
             margin: 5%;
+            width: 6rem;
           }
 
           &__singleButton:hover {
@@ -37,12 +39,16 @@
     }
   }
 }
+.videoUserComponent__oneVideo__videoInfo__titleAndButton h3{
+  width: 30vw;
+}
 
 #componentTitle {
   margin-left: 2%;
 }
 #videoTitle {
   margin-bottom: 1%;
+  border: solid red;
 }
 
 #miniature {

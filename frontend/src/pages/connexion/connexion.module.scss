@@ -6,6 +6,9 @@ body {
   background-color: #20212f;
   font-family: $mainFont;
 }
+.inscription__mainElement__formConteneur__formulaire::-webkit-scrollbar {
+  display: none;
+}
 
 .inscription {
   display: flex;

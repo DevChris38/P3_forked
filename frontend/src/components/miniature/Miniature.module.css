@@ -21,7 +21,6 @@
 .carousel {
   display: flex;
   flex-direction: column;
-  background-color: rgb(29, 30, 43);
   border-radius: 20px;
   align-items: center;
 }
