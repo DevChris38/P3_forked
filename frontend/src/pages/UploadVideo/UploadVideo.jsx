@@ -67,11 +67,7 @@ function UploadVideo() {
     return (
       videoFile && (
         <video src={URL.createObjectURL(videoFile)} controls>
-          <track
-            default
-            kind="captions"
-            src="../../assets/quenouilles.fr.vtt"
-          />
+          <track default kind="captions" />
         </video>
       )
     );
@@ -224,6 +220,12 @@ function UploadVideo() {
                 sx={{
                   width: 300,
 
+                  backgroundColor: "#20212f",
+
+                  "&:hover": {
+                    backgroundColor: "#20212f",
+                  },
+
                   "& + .MuiAutocomplete-popper .MuiAutocomplete-option": {
                     backgroundColor: "#20212f",
                   },
@@ -232,6 +234,17 @@ function UploadVideo() {
                       backgroundColor: "#20212f",
                     },
                   "& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected ='true'] .Mui-focused":
+                    {
+                      backgroundColor: "#20212f",
+                    },
+                  "& + .MuiAutocomplete-popper .MuiAutocomplete-option:hover": {
+                    backgroundColor: "#20212f",
+                  },
+                  "& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected='true']:hover":
+                    {
+                      backgroundColor: "#20212f",
+                    },
+                  "& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected ='true'] .Mui-focused:hover":
                     {
                       backgroundColor: "#20212f",
                     },
