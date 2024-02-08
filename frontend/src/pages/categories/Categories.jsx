@@ -110,7 +110,7 @@ export default function Categories() {
     };
     fetchData2();
   }, []);
-  console.log(mostView);
+
   return (
     <>
       <Navbar />
