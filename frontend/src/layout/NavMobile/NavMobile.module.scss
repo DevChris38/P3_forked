@@ -18,6 +18,16 @@
 .icon {
   width: 2.5rem;
 }
+
+.imgProfilMobil{
+  height: 3rem;
+  width: 10%;
+}
+.logoutMobil{
+  background-color: black;
+  height: 8vw;
+  width: fit-content;
+}
 @media screen and (min-width: 1000px) {
   .navmobile {
     display: none;

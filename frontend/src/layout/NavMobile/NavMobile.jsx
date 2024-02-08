@@ -1,6 +1,17 @@
 import styles from "./NavMobile.module.css";
+import {useNavigate} from "react-router-dom";
+import { useInfosContext } from "../../UserContext";
 
 export default function NavMobile() {
+  const { userData } = useInfosContext();
+  const navigate = useNavigate();
+  const { logout } = useInfosContext();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/connexion");
+    console.log("coucou")
+  };
   const icon = [
     {
       src: "/home.svg",
@@ -20,18 +31,18 @@ export default function NavMobile() {
       id: 3,
       path: "/upload",
     },
-    {
-      src: "/favorite.svg",
-      alt: "favorite logo",
-      id: 4,
-      path: "/user",
-    },
-    {
-      src: "/account.svg",
-      alt: "profile logo",
-      id: 5,
-      path: "/user",
-    },
+    // {
+    //   src: "/logout.svg",
+    //   alt: "favorite logo",
+    //   id: 4,
+    //   path: "/user",
+    // },
+    // {
+    //   src: "/account.svg",
+    //   alt: "profile logo",
+    //   id: 5,
+    //   path: "/user",
+    // },
   ];
 
   return (
@@ -46,6 +57,34 @@ export default function NavMobile() {
           />
         </a>
       ))}
+       <input
+        className={styles.logoutMobil}
+        type="image"
+        src="/logout.svg"
+        alt="avatarVoiture"
+        onClick={handleLogout}
+      />
+       {userData !== null && userData.pseudo !== undefined ? (
+        <input
+          className={styles.imgProfilMobil}
+          type="image"
+          src={`/${userData.avatar}`}
+          alt="avatarVoiture"
+          onClick={() => {
+            navigate("/user");
+          }}
+        />
+      ) : (
+        <input
+        className={styles.imgProfilMobil}
+        type="image"
+        src={`/${userData.avatar}`}
+        alt="avatarVoiture"
+        onClick={() => {
+          navigate("/connexion");
+        }}
+      />
+      )}
     </nav>
   );
 }

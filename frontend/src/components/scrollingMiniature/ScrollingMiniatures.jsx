@@ -59,5 +59,5 @@ ScrollingMiniatures.propTypes = {
     nb_view: PropTypes.number,
     nbr_like: PropTypes.number,
     description: PropTypes.string,
-  }).isRequired,
+  })
 };
