@@ -66,9 +66,6 @@ router.get("/countVideos", videoControllers.countVideo);
 
 /* ******************************************************************************************* */
 
-// Authentication wall that allows to protect all routes after that
-router.use(verifyToken);
-
 router.put("/users", userControllers.modify);
 router.put("/videos", videoControllers.ModifyVideo);
 
@@ -84,6 +81,9 @@ router.delete("/users/deleteUser", userControllers.userDelete);
 // Routes to get user informations or add a new user
 router.get("/users/:id", userControllers.read);
 router.get("/logout", authControllers.logout);
+
+// Authentication wall that allows to protect all routes after that
+router.use(verifyToken);
 
 /* ************************************************************************* */
 
