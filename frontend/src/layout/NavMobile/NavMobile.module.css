@@ -9,8 +9,8 @@
   height: -moz-fit-content;
   height: fit-content;
   padding: 2%;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  bottom: 0;
 }
 
 .aLink {
