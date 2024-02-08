@@ -78,7 +78,7 @@ export default function NavMobile() {
         <input
         className={styles.imgProfilMobil}
         type="image"
-        src={`/${userData.avatar}`}
+        src={`/account.svg`}
         alt="avatarVoiture"
         onClick={() => {
           navigate("/connexion");
