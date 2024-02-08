@@ -11,7 +11,7 @@
     --slide-height: 100%;
 
     &__viewport {
-      overflow: visible;
+      overflow: hidden;
 
       &__container {
         backface-visibility: hidden;
