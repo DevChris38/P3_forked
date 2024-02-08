@@ -3,6 +3,10 @@ body {
   font-family: SpaceGrotesque, verdana;
 }
 
+.inscription__mainElement__formConteneur__formulaire::-webkit-scrollbar {
+  display: none;
+}
+
 .inscription {
   display: flex;
   justify-content: center;
@@ -125,4 +129,4 @@ input {
     height: 6vh;
     width: 80vw;
   }
-}/*# sourceMappingURL=connexion.module.css.map */
+} /*# sourceMappingURL=connexion.module.css.map */

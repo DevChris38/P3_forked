@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./Categories.module.css";
 import Navbar from "../../layout/navbar/Navbar";
@@ -134,6 +134,10 @@ export default function Categories() {
                 className={styles.miniatureContainer__miniature}
                 key={element.id}
               >
+                <Link 
+                to={{
+                      pathname: `/video/${element.id}`,
+                    }}>
                 {" "}
                 {allVideos.length > 0 || allVideos !== undefined ? (
                   <Miniature
@@ -141,6 +145,7 @@ export default function Categories() {
                     carouselClass="carousel"
                   />
                 ) : null}
+                </Link>
               </div>
             );
           })}

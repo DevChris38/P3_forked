@@ -1,5 +1,6 @@
 .videoUserComponent {
   color: white;
+  width: 31vw;
 }
 .videoUserComponent__oneVideo {
   display: flex;
@@ -28,9 +29,14 @@
 }
 .videoUserComponent__oneVideo__videoInfo__titleAndButton__buttons__singleButton {
   margin: 5%;
+  width: 6rem;
 }
 .videoUserComponent__oneVideo__videoInfo__titleAndButton__buttons__singleButton:hover {
   background-color: #20212f;
+}
+
+.videoUserComponent__oneVideo__videoInfo__titleAndButton h3 {
+  width: 30vw;
 }
 
 #componentTitle {
@@ -39,6 +45,7 @@
 
 #videoTitle {
   margin-bottom: 1%;
+  border: solid red;
 }
 
 #miniature {
@@ -60,4 +67,4 @@
   #miniature {
     width: 100%;
   }
-}/*# sourceMappingURL=videoUser.module.css.map */
+} /*# sourceMappingURL=videoUser.module.css.map */

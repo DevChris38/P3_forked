@@ -18,6 +18,7 @@ body {
   left: 50%;
   top: 12%;
   translate: -50%;
+  height: 100%;
 }
 .inscription__mainElement__OkMessage {
   display: none;
@@ -142,4 +143,4 @@ input {
     height: 6vh;
     width: 70vw;
   }
-}/*# sourceMappingURL=inscription.module.css.map */
+} /*# sourceMappingURL=inscription.module.css.map */
