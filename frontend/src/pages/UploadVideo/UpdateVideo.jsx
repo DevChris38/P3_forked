@@ -34,7 +34,8 @@ function UploadVideo() {
     })();
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/videos`, {
       method: "PUT",
       body: JSON.stringify({
@@ -44,8 +45,7 @@ function UploadVideo() {
         videoId: params.id,
       }),
       headers: { "Content-Type": "application/json" },
-    }).then((response) => response.json());
-    navigate(`/video/${params.id}`);
+    }).then(() => navigate(`/video/${params.id}`));
   };
 
   return (
@@ -108,7 +108,7 @@ function UploadVideo() {
               }}
             />
 
-            <button type="submit" onClick={handleSubmit}>
+            <button type="submit" onClick={(e) => handleSubmit(e)}>
               Valider
             </button>
           </div>

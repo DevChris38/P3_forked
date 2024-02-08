@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import Miniature from "../miniature/Miniature";
 import styles from "./ScrollingMiniatures.module.css";
 
-function ScrollingMiniatures() {
+function ScrollingMiniatures({ videoInfo }) {
   const [display, setDisplay] = useState("");
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function ScrollingMiniatures() {
       const videoResult = await videoCall.json();
       setDisplay(videoResult);
     })();
-  }, []);
+  }, [videoInfo]);
 
   if (display !== "") {
     return (
@@ -49,3 +50,14 @@ function ScrollingMiniatures() {
 }
 
 export default ScrollingMiniatures;
+
+ScrollingMiniatures.propTypes = {
+  videoInfo: PropTypes.shape({
+    link: PropTypes.string,
+    title: PropTypes.string,
+    pseudo: PropTypes.string,
+    nb_view: PropTypes.number,
+    nbr_like: PropTypes.number,
+    description: PropTypes.string,
+  }).isRequired,
+};
