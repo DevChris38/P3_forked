@@ -29,6 +29,7 @@ const hashPassword = async (req, res, next) => {
 };
 
 const verifyToken = (req, res, next) => {
+  console.log(req);
   try {
     const token = req.cookies.access_token;
     if (!token) {
