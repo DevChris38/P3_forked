@@ -110,7 +110,7 @@ export default function Categories() {
     };
     fetchData2();
   }, []);
-  console.log(mostView);
+
   return (
     <>
       <Navbar />
@@ -134,17 +134,18 @@ export default function Categories() {
                 className={styles.miniatureContainer__miniature}
                 key={element.id}
               >
-                <Link 
-                to={{
-                      pathname: `/video/${element.id}`,
-                    }}>
-                {" "}
-                {allVideos.length > 0 || allVideos !== undefined ? (
-                  <Miniature
-                    idMiniature={element.id}
-                    carouselClass="carousel"
-                  />
-                ) : null}
+                <Link
+                  to={{
+                    pathname: `/video/${element.id}`,
+                  }}
+                >
+                  {" "}
+                  {allVideos.length > 0 || allVideos !== undefined ? (
+                    <Miniature
+                      idMiniature={element.id}
+                      carouselClass="carousel"
+                    />
+                  ) : null}
                 </Link>
               </div>
             );

@@ -33,5 +33,4 @@ export default function DonneesCategories() {
     };
     fetchData;
   }, []);
-  console.log(result);
 }
