@@ -66,35 +66,44 @@ class UserManager extends AbstractManager {
       await this.database.query("DELETE FROM likes WHERE user_id = ?", [
         userId,
       ]);
-
       const onlyVideos = videosUser[0];
-      for await (const video of onlyVideos) {
-        this.database.query("DELETE FROM likes WHERE video_id = ?", [video.id]);
-      }
-      for await (const video of onlyVideos) {
-        this.database.query("DELETE FROM video_category WHERE video_id = ?", [
-          video.id,
-        ]);
-      }
 
-      const testCategoryVideo = await this.database.query(
-        "select * from video_category where video_id = ?",
-        [userId]
-      );
-      if (testCategoryVideo[0].length <= 0) {
+      if (onlyVideos.length <= 0) {
+        await this.database.query(`DELETE FROM ${this.table} WHERE id = ?`, [
+          userId,
+        ]);
+      } else {
         for await (const video of onlyVideos) {
-          this.database.query("DELETE FROM video WHERE id = ?", [video.id]);
+          this.database.query("DELETE FROM likes WHERE video_id = ?", [
+            video.id,
+          ]);
         }
-        const testVideo = await this.database.query(
-          "select * from video where user_id = ?",
-          [userId]
+        for await (const video of onlyVideos) {
+          this.database.query("DELETE FROM video_category WHERE video_id = ?", [
+            video.id,
+          ]);
+        }
+        const testCategoryVideo = await this.database.query(
+          "select * from video_category where video_id = ?",
+          [onlyVideos[0].id]
         );
 
-        if (testVideo[0].length <= 0) {
-          // Delete the user itself
-          await this.database.query(`DELETE FROM ${this.table} WHERE id = ?`, [
-            userId,
-          ]);
+        if (testCategoryVideo[0].length <= 0) {
+          for await (const video of onlyVideos) {
+            this.database.query("DELETE FROM video WHERE id = ?", [video.id]);
+          }
+          const testVideo = await this.database.query(
+            "select * from video where user_id = ?",
+            [userId]
+          );
+
+          if (testVideo[0].length <= 0) {
+            // Delete the user itself
+            await this.database.query(
+              `DELETE FROM ${this.table} WHERE id = ?`,
+              [userId]
+            );
+          }
         }
       }
     } else {
