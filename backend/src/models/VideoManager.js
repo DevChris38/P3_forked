@@ -10,7 +10,7 @@ class MainVideoPlayerManager extends AbstractManager {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
-      `SELECT video.id, title, link, image, description, nb_view, video.user_id, pseudo, count(*) as nbr_like from ${this.table} INNER JOIN user ON user.id = video.user_id INNER JOIN likes WHERE video.id =?`,
+      `SELECT video.id, title, link, image, description, nb_view, video.user_id, pseudo, count(likes.video_id) as nbr_like from ${this.table} INNER JOIN user ON user.id = video.user_id LEFT JOIN likes ON video.id = likes.video_id WHERE video.id =?`,
       [id]
     );
 
