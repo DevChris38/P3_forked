@@ -62,7 +62,7 @@ app.use(
 
 app.use(
   helmet({
-    xFrameOptions: { action: "deny" },
+    frameguard: { action: "deny" },
   })
 );
 // app.use(express.urlencoded());
