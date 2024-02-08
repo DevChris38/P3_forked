@@ -13,6 +13,14 @@
   color: white;
   font-size: 30pt;
 }
+.searchBarPage__searchBar::-moz-placeholder {
+  font-weight: bolder;
+  color: white;
+  font-size: 30pt;
+  margin: 3%;
+  line-height: normal;
+  margin: 20px;
+}
 .searchBarPage__searchBar::placeholder {
   font-weight: bolder;
   color: white;
@@ -31,6 +39,4 @@
 #scrollingMiniatures__miniature {
   width: 350px;
   margin: 2%;
-}
-
-/*# sourceMappingURL=searchBar.module.css.map */
+}/*# sourceMappingURL=searchBar.module.css.map */
