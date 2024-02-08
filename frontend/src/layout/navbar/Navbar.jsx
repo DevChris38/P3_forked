@@ -46,10 +46,10 @@ export default function Navbar() {
         className={styles.btnConnection}
         onClick={userData !== undefined ? handleLogout : handleClickConnexion}
       >
-        {userData.pseudo !== undefined ? "Se Deconnecter" : "Se Connecter"}
+        {userData !== null ? "Se Deconnecter" : "Se Connecter"}
       </button>
 
-      {userData.pseudo !== undefined ? (
+      {userData !== null ? (
         <input
           className={styles.imgProfil}
           type="image"
