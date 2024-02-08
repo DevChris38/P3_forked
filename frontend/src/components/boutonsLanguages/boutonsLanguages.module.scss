@@ -1,6 +1,9 @@
 .mainButtonsContainer::-webkit-scrollbar {
   display: none;
 }
+.buttonsContainer::-webkit-scrollbar {
+  display: none;
+}
 .mainButtonsContainer {
   width: 100%;
   overflow-x: auto;
