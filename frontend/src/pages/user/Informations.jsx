@@ -77,6 +77,7 @@ function Informations({ id, avatar }) {
         `${import.meta.env.VITE_BACKEND_URL}/api/users/deleteUser`,
         {
           method: "delete",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             userId: id,
@@ -101,6 +102,7 @@ function Informations({ id, avatar }) {
         `${import.meta.env.VITE_BACKEND_URL}/api/users`,
         {
           method: "put",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             userId: id,

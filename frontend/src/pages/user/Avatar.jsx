@@ -14,6 +14,7 @@ function Avatar() {
       // Appel à l'API pour créer un nouvel utilisateur
       await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users`, {
         method: "put",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           firstname: userData.firstname,
