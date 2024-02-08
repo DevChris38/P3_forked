@@ -60,3 +60,17 @@
   font-size: 2rem;
   margin-bottom: 3%;
 }
+
+@media screen and (max-width: 750px) {
+  .miniatureContainer img {
+    width: 15rem;
+  }
+
+  .miniatureContainer__miniature {
+    width: 45%;
+  }
+  .miniatureContainer{
+    margin-left: 2%;
+    gap: 2rem;
+  }
+}

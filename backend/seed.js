@@ -448,12 +448,12 @@ const seed = async () => {
     }
 
     const valuesCategory = [
-      ["JavaScript"],
+      ["Python"],
       ["css"],
+      ["php"],
       ["Java"],
       ["Autre"],
-      ["php"],
-      ["Python"],
+      ["JavaScript"],
     ];
 
     for (let i = 0; i < valuesCategory.length; i++) {

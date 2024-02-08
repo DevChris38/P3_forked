@@ -26,7 +26,7 @@ nav {
   align-items: center;
   padding: 1rem;
   background: linear-gradient(black 20px, transparent);
-  width: 100vw;
+  width: 95vw;
   justify-content: space-between;
   text-decoration: none;
 }
@@ -79,6 +79,7 @@ nav ul {
 @media screen and (min-width: 1000px) {
   nav {
     background: linear-gradient(black 30px, transparent);
+    width: 100vw;
   }
   nav ul {
     display: flex;
