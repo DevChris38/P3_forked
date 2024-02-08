@@ -1,9 +1,11 @@
 // Load the express module to create a web application
-
+const helmet = require("helmet");
+const { expressCspHeader, NONE } = require("express-csp-header");
 const express = require("express");
 
 const app = express();
 const cors = require("cors");
+
 // Configure it
 
 /* ************************************************************************* */
@@ -49,6 +51,20 @@ app.use(
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
 app.use(express.json());
+
+app.use(
+  expressCspHeader({
+    directives: {
+      "frame-ancestors": [NONE],
+    },
+  })
+);
+
+app.use(
+  helmet({
+    xFrameOptions: { action: "deny" },
+  })
+);
 // app.use(express.urlencoded());
 // app.use(express.text());
 // app.use(express.raw());
