@@ -10,7 +10,7 @@ class MainVideoPlayerManager extends AbstractManager {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
-      `SELECT title, link, image, description, nb_view, pseudo, count(*) as nbr_like from ${this.table} INNER JOIN user ON user.id = video.user_id INNER JOIN likes WHERE video.id =?`,
+      `SELECT video.id, title, link, image, description, nb_view, video.user_id, pseudo, count(*) as nbr_like from ${this.table} INNER JOIN user ON user.id = video.user_id INNER JOIN likes WHERE video.id =?`,
       [id]
     );
 
@@ -19,7 +19,7 @@ class MainVideoPlayerManager extends AbstractManager {
 
   async readImageById(id) {
     const [rows] = await this.database.query(
-      `SELECT id, image, title FROM ${this.table} where id = ?`,
+      `SELECT image, title FROM ${this.table} where id = ?`,
       [id]
     );
     return rows[0];
@@ -75,16 +75,17 @@ class MainVideoPlayerManager extends AbstractManager {
     }
   }
 
-  async updateVideo(title, description, videoId, userId) {
+  async updateVideo(video) {
+    console.error(video);
     const check = await this.database.query(
-      "SELECT * FROM video WHERE user_id = ? AND id = ?",
-      [userId, videoId]
+      "SELECT * FROM video WHERE id = ?",
+      [video.videoId]
     );
     if (check[0].length > 0) {
       await this.database.query(
         `update ${this.table}
           set title = ? , description = ? WHERE id= ?`,
-        [title, description, videoId]
+        [video.title, video.description, video.videoId]
       );
     }
   }
@@ -185,6 +186,7 @@ class MainVideoPlayerManager extends AbstractManager {
     );
     return rows;
   }
+
   async readSpecificCategories(category, name) {
     const [rows] = await this.database.query(
       `SELECT video.id
@@ -217,6 +219,7 @@ class MainVideoPlayerManager extends AbstractManager {
     );
     return rows;
   }
+
   async categoryMostLiked(categoryName) {
     const [rows] = await this.database.query(
       `select video_category.video_id as test from video_category
@@ -243,6 +246,24 @@ class MainVideoPlayerManager extends AbstractManager {
       where category.name = ? group by video.id order by video.id desc`,
       [categoryName]
     );
+    return rows;
+  }
+
+  async searchTitle(search) {
+    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    const [rows] = await this.database.query(
+      `select id, title, image from ${this.table} where title LIKE '%${search}%' or description LIKE '%${search}%'`
+    );
+
+    return rows;
+  }
+
+  async countVideo() {
+    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    const [rows] = await this.database.query(
+      `select id from ${this.table} order by rand() limit 10`
+    );
+
     return rows;
   }
 }

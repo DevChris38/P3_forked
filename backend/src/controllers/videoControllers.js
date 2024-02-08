@@ -67,11 +67,8 @@ const isLikedByUser = async (req, res, next) => {
 };
 const ModifyVideo = async (req, res, next) => {
   try {
-    const { title } = req.body;
-    const { description } = req.body;
-    const { videoId } = req.body;
-    const { userId } = req.body;
-    await tables.video.updateVideo(title, description, videoId, userId);
+    const video = req.body;
+    await tables.video.updateVideo(video);
     res.status(200).send("video was updated");
   } catch (err) {
     console.error(err);
@@ -217,6 +214,33 @@ const categoryMostView = async (req, res, next) => {
   }
 };
 
+const searchTitle = async (req, res, next) => {
+  const { searchRequest } = req.query;
+  try {
+    const video = await tables.video.searchTitle(searchRequest);
+    if (video == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(video);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const countVideo = async (req, res, next) => {
+  try {
+    const video = await tables.video.countVideo();
+    if (video == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(video);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   read,
   readImageById,
@@ -234,4 +258,6 @@ module.exports = {
   mostLiked,
   CategoryMostLiked,
   categoryMostView,
+  searchTitle,
+  countVideo,
 };

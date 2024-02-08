@@ -43,7 +43,7 @@ router.get(
 // route qui recupère le titre et l'image de la miniature video
 
 router.get("/videosSelected", videoControllers.readByCategories);
-router.put("/video", videoControllers.ModifyVideo);
+router.put("/videos", videoControllers.ModifyVideo);
 
 // route qui ajoute/supprime un like à une video
 router.put("/videos/:id/like/:user", videoControllers.likeVideo);
@@ -52,7 +52,7 @@ router.put("/videos/:id/like/:user", videoControllers.likeVideo);
 router.get("/videos/:id/like/:user", videoControllers.isLikedByUser);
 
 // route qui ajoute une nouvelle video
-router.post("/videos/upload", videoControllers.uploadVideo);
+router.post("/videos", videoControllers.uploadVideo);
 
 // Routes to get user informations or add a new user
 router.get("/users/:id", userControllers.read);
@@ -69,6 +69,12 @@ router.delete("/users/deleteUser", userControllers.userDelete);
 
 router.get("/categories", videoControllers.allCategories);
 router.get("/special/:category", videoControllers.readSpecificCategories);
+
+// route pour la fonctionnalité de recherche
+router.get("/search", videoControllers.searchTitle);
+
+// route pour l'affichage de miniature aleatoire
+router.get("/countVideos", videoControllers.countVideo);
 
 // Authentication wall that allows to protect all routes after that
 router.use(verifyToken);

@@ -10,6 +10,7 @@ import {
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../layout/navbar/Navbar";
 import NavMobile from "../../layout/NavMobile/NavMobile";
 import styles from "./uploadVideo.module.css";
@@ -44,22 +45,20 @@ function UploadVideo() {
   const [videoFile, setVideoFile] = useState();
   const [miniatureFile, setMiniatureFile] = useState();
   const [submission, setSubmission] = useState(false);
+  const navigate = useNavigate();
 
   // Fonction qui sera appelée par le useEffect pour poster les données dans la BDD
-  const postDataVideo = async () => {
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/videos/upload`, {
+  const postDataVideo = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/videos`, {
       method: "POST",
       body: JSON.stringify({ video }),
       headers: { "Content-Type": "application/json" },
-    });
+    }).then(() => navigate(`/user`));
   };
 
   useEffect(() => {
     if (video.videoUrl !== "" && video.miniatureUrl !== "") {
       postDataVideo();
-      setTimeout(() => {
-        window.location.reload();
-      }, "2000");
     }
   }, [video.miniatureUrl]);
 

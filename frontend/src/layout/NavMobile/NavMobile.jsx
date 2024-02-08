@@ -12,7 +12,7 @@ export default function NavMobile() {
       src: "/search.svg",
       alt: "search logo",
       id: 2,
-      path: "#path for eslint",
+      path: "/search",
     },
     {
       src: "/circle.svg",
