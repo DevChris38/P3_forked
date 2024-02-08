@@ -31,9 +31,15 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/upload" className={styles.navbar}>
-            Ajouter une video
-          </Link>
+          {userData !== null && userData.pseudo !== undefined ? (
+            <Link to="/upload" className={styles.navbar}>
+              Ajouter une video
+            </Link>
+          ) : (
+            <Link to="/connexion" className={styles.navbar}>
+              Ajouter une video
+            </Link>
+          )}
         </li>
         <li>
           <Link to="/search" className={styles.navbar}>
@@ -60,7 +66,7 @@ export default function Navbar() {
           className={styles.imgProfil}
           type="image"
           src={`/${userData.avatar}`}
-          alt="avatarVoiture"
+          alt="avatar de l'utlisateur"
           onClick={() => {
             navigate("/user");
           }}
