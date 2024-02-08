@@ -16,7 +16,6 @@ const authControllers = require("./controllers/authControllers");
 router.post("/users", hashPassword, userControllers.add);
 router.post("/login", authControllers.login);
 router.get("/videos/:id", videoControllers.read);
-router.put("/users", userControllers.modify);
 
 // Route to get a list of items
 router.get("/items", itemControllers.browse);
@@ -34,7 +33,10 @@ router.get("/videosId", videoControllers.OrderById);
 router.get("/videosView", videoControllers.OrderByView);
 router.get("/videosView", videoControllers.OrderByView);
 router.get("/videoslikes", videoControllers.mostLiked);
-router.get("/videosCategoryLikes/:categoryName", videoControllers.CategoryMostLiked);
+router.get(
+  "/videosCategoryLikes/:categoryName",
+  videoControllers.CategoryMostLiked
+);
 router.get(
   "/videosMostViewCategoryLikes/:categoryName",
   videoControllers.categoryMostView
@@ -43,7 +45,6 @@ router.get(
 // route qui recupère le titre et l'image de la miniature video
 
 router.get("/videosSelected", videoControllers.readByCategories);
-router.put("/videos", videoControllers.ModifyVideo);
 
 // route qui ajoute/supprime un like à une video
 router.put("/videos/:id/like/:user", videoControllers.likeVideo);
@@ -51,21 +52,8 @@ router.put("/videos/:id/like/:user", videoControllers.likeVideo);
 // route qui vérifie si un utilisateur a liké une vidéo
 router.get("/videos/:id/like/:user", videoControllers.isLikedByUser);
 
-// route qui ajoute une nouvelle video
-router.post("/videos", videoControllers.uploadVideo);
-
-// Routes to get user informations or add a new user
-router.get("/users/:id", userControllers.read);
-router.get("/logout", authControllers.logout);
-
 // route qui recupere les informations des videos selon l'id user
 router.get("/videos/posted/:id", videoControllers.readByUserId);
-
-// route qui supprime une video
-router.delete("/videos/deleteVideo", videoControllers.videoDelete);
-
-// route qui supprime un user
-router.delete("/users/deleteUser", userControllers.userDelete);
 
 router.get("/categories", videoControllers.allCategories);
 router.get("/special/:category", videoControllers.readSpecificCategories);
@@ -76,8 +64,26 @@ router.get("/search", videoControllers.searchTitle);
 // route pour l'affichage de miniature aleatoire
 router.get("/countVideos", videoControllers.countVideo);
 
+/* ******************************************************************************************* */
+
 // Authentication wall that allows to protect all routes after that
 router.use(verifyToken);
+
+router.put("/users", userControllers.modify);
+router.put("/videos", videoControllers.ModifyVideo);
+
+// route qui ajoute une nouvelle video
+router.post("/videos", videoControllers.uploadVideo);
+
+// route qui supprime une video
+router.delete("/videos/deleteVideo", videoControllers.videoDelete);
+
+// route qui supprime un user
+router.delete("/users/deleteUser", userControllers.userDelete);
+
+// Routes to get user informations or add a new user
+router.get("/users/:id", userControllers.read);
+router.get("/logout", authControllers.logout);
 
 /* ************************************************************************* */
 
